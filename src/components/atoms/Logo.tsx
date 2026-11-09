@@ -1,7 +1,14 @@
+import Image from 'next/image';
+
 const Logo = () => (
-  <span className="ml-2 self-center text-2xl font-bold whitespace-nowrap text-gray-900 md:text-xl dark:text-white">
-    TailNext
-  </span>
+  <Image
+    src="/brand/gorizont-logo.jpg"
+    alt="ГОРИЗОНТ"
+    width={1717}
+    height={585}
+    priority
+    className="h-11 w-auto md:h-14"
+  />
 );
 
 export default Logo;

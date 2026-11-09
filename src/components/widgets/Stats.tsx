@@ -11,7 +11,7 @@ const Stats = ({ items, id, hasBackground = false }: StatsProps) => (
           className="mb-12 text-center md:mb-0 md:border-r md:last:border-none dark:md:border-slate-500"
         >
           <div className="text-primary text-[2.6rem] font-bold lg:text-5xl xl:text-6xl dark:text-white">
-            {getSuffixNumber(title as number)}
+            {typeof title === 'number' && Number.isFinite(title) ? getSuffixNumber(title) : String(title ?? '')}
           </div>
           <p className="text-sm font-medium tracking-widest text-gray-800 uppercase lg:text-base dark:text-slate-400">
             {description}

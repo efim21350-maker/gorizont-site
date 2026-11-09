@@ -1,62 +1,93 @@
-import { footerData2 } from '~/shared/data/global.data';
+import Link from 'next/link';
 
-const Footer2 = () => {
-  const { links, columns, socials, footNote } = footerData2;
+import { company, mapHref, nav } from '~/lib/company';
 
-  return (
-    <footer className="mx-auto max-w-7xl px-4 sm:px-6">
-      <div className="grid grid-cols-4 gap-4 gap-y-8 py-8 md:py-12">
-        {columns.map(({ title, texts }, index) => (
-          <div
-            key={`item-column-${index}`}
-            className="col-span-4 sm:col-span-2 md:col-span-2 lg:col-span-1 xl:col-span-1"
-          >
-            <div className="mb-2 font-medium text-gray-800 dark:text-gray-300">{title}</div>
-            {texts &&
-              texts.map((text, index2) => (
-                <p key={`item-text-${index2}`} className="text-gray-600 dark:text-slate-400">
-                  {text}
-                </p>
-              ))}
-          </div>
-        ))}
-        <div className="col-span-4 sm:col-span-2 md:col-span-2 lg:col-span-1 xl:col-span-1">
-          <div className="mb-2 font-medium text-gray-800 dark:text-gray-300">Social</div>
-          <ul className="mb-4 -ml-2 flex md:order-1 md:mb-0 rtl:-mr-2 rtl:ml-0">
-            {socials.map(({ label, icon: Icon, href }, index) => (
-              <li key={`item-social-${index}`}>
-                <a
-                  className="inline-flex items-center rounded-lg p-2.5 text-sm hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 focus:outline-hidden dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
-                  aria-label={label}
-                  href={href}
-                >
-                  {Icon && <Icon className="h-5 w-5" />}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+const Footer2 = () => (
+  <footer className="border-t border-black/10 bg-white">
+    <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-12">
+      <div className="md:col-span-4">
+        <p className="font-display text-2xl tracking-[0.18em]">{company.wordmark}</p>
+        <p className="mt-3 max-w-xs text-sm leading-relaxed text-[#3a3a3a]">
+          Строительная компания в Санкт-Петербурге. Благоустройство, земляные работы, дороги и наружные сети.
+        </p>
       </div>
-      <div className="py-6 text-sm text-gray-700 md:flex md:items-center md:justify-between md:py-8 dark:text-slate-400">
-        <ul className="mb-4 flex pl-2 md:order-1 md:mb-0 rtl:pr-2 rtl:pl-0">
-          {links &&
-            links.map(({ label, href }, index) => (
-              <li key={`item-link-${index}`}>
-                <a
-                  className="duration-150 ease-in-out placeholder:transition hover:text-gray-700 hover:underline dark:text-gray-400"
-                  aria-label={label}
-                  href={href}
-                >
-                  {label}
-                </a>
-                {links.length - 1 !== index && <span className="mr-1 rtl:mr-0 rtl:ml-1"> · </span>}
-              </li>
-            ))}
+      <div className="md:col-span-2">
+        <p className="text-xs tracking-[0.16em] text-[#8a8a8a] uppercase">Разделы</p>
+        <ul className="mt-4 space-y-2 text-sm">
+          {nav.map((item) => (
+            <li key={item.href}>
+              <Link href={item.href} className="hover:text-[#C5001C]">
+                {item.label}
+              </Link>
+            </li>
+          ))}
+          <li>
+            <Link href="/voprosy" className="hover:text-[#C5001C]">
+              Вопросы
+            </Link>
+          </li>
         </ul>
-        {footNote}
       </div>
-    </footer>
-  );
-};
+      <div className="md:col-span-3">
+        <p className="text-xs tracking-[0.16em] text-[#8a8a8a] uppercase">Контакты</p>
+        <p className="mt-4 text-sm leading-relaxed">{company.address}</p>
+        <p className="mt-3 text-sm">
+          <a href={`tel:${company.phoneTel}`} className="hover:text-[#C5001C]">
+            {company.phoneDisplay}
+          </a>
+        </p>
+        <ul className="mt-2 space-y-1 text-sm">
+          {company.emails.map((email) => (
+            <li key={email}>
+              <a href={`mailto:${email}`} className="hover:text-[#C5001C]">
+                {email}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-3 text-sm">
+          <a href={mapHref} className="underline decoration-[#C5001C] underline-offset-4">
+            На карте
+          </a>
+        </p>
+      </div>
+      <div className="md:col-span-3">
+        <p className="text-xs tracking-[0.16em] text-[#8a8a8a] uppercase">Реквизиты</p>
+        <p className="mt-4 text-sm leading-relaxed">
+          {company.shortName}
+          <br />
+          ИНН {company.inn}
+          <br />
+          КПП {company.kpp}
+          <br />
+          ОГРН {company.ogrn}
+          <br />
+          ОКПО {company.okpo}
+          <br />
+          ОКВЭД {company.okved}
+        </p>
+        <p className="mt-3 text-sm text-[#5c5c5c]">Банковские реквизиты на сайте не публикуются.</p>
+      </div>
+    </div>
+    <div className="border-t border-black/10">
+      <div className="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-6 text-sm text-[#5c5c5c] md:flex-row md:items-center md:justify-between">
+        <p>
+          © {company.shortName}. {company.directorTitle} — {company.director}.
+        </p>
+        <p className="flex flex-wrap gap-x-4 gap-y-2">
+          <Link href="/privacy" className="hover:text-[#111]">
+            Конфиденциальность
+          </Link>
+          <Link href="/terms" className="hover:text-[#111]">
+            Условия использования
+          </Link>
+          <a href="https://github.com/arthelokyo/tailnext" className="hover:text-[#111]">
+            Основано на TailNext (MIT)
+          </a>
+        </p>
+      </div>
+    </div>
+  </footer>
+);
 
 export default Footer2;

@@ -1,11 +1,16 @@
-export const SITE = {
-  name: 'TailNext',
+const originFromEnv = () => {
+  if (process.env.NEXT_PUBLIC_SITE_ORIGIN) return process.env.NEXT_PUBLIC_SITE_ORIGIN;
+  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  return 'http://localhost:3000';
+};
 
-  // Sobrescribible por entorno para vistas previas y forks (ver .env.example).
-  origin: process.env.NEXT_PUBLIC_SITE_ORIGIN ?? 'https://tailnext.vercel.app',
+export const SITE = {
+  name: 'ООО «Горизонт»',
+  origin: originFromEnv(),
   basePathname: '/',
   trailingSlash: false,
-
-  title: 'TailNext — Your website with Next.js + Tailwind CSS',
-  description: 'TailNext is a free and ready to start template to make your website using Next.js and Tailwind CSS.',
+  title: 'ООО «Горизонт» — благоустройство, дороги и наружные сети в Санкт-Петербурге',
+  description:
+    'Строительная компания в Санкт-Петербурге: благоустройство и ландшафт, земляные работы, дорожное строительство, наружные сети водоснабжения и канализации.',
 } as const;

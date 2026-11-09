@@ -5,21 +5,22 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-primary-50: #eff6ff;
-  --color-primary-100: #dbeafe;
-  --color-primary-200: #bfdbfe;
-  --color-primary-300: #93c5fd;
-  --color-primary-400: #60a5fa;
-  --color-primary-500: #3b82f6;
-  --color-primary-600: #2563eb;
-  --color-primary-700: #1d4ed8;
-  --color-primary-800: #1e40af;
-  --color-primary-900: #1e3a8a;
-  --color-primary-950: #172554;
+  --color-primary-50: #fff1f2;
+  --color-primary-100: #ffe0e3;
+  --color-primary-200: #ffc5cb;
+  --color-primary-300: #ff9aa4;
+  --color-primary-400: #f25b6a;
+  --color-primary-500: #e1062c;
+  --color-primary-600: #c5001c;
+  --color-primary-700: #a30018;
+  --color-primary-800: #7c0014;
+  --color-primary-900: #5c0012;
+  --color-primary-950: #3a000b;
 
   --font-sans:
-    var(--font-custom), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    var(--font-inter), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
     'Noto Color Emoji';
+  --font-display: var(--font-manrope), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
 /*
@@ -41,11 +42,72 @@
 }
 
 @utility btn {
-  @apply inline-flex items-center justify-center rounded-md border border-gray-400 bg-white px-6 py-3 text-center text-base leading-snug font-medium text-gray-700 shadow-md transition duration-200 ease-in hover:border-gray-600 hover:bg-gray-100 hover:shadow-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-blue-200 md:px-8 dark:border-slate-500 dark:bg-transparent dark:text-slate-300 dark:hover:border-slate-700 dark:hover:bg-slate-700 dark:hover:text-white;
+  @apply inline-flex items-center justify-center rounded-none border border-[#111] bg-white px-6 py-3 text-center text-base leading-snug font-medium text-[#111] transition duration-200 ease-in hover:bg-[#111] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C5001C] md:px-8;
 }
 
 @utility btn-primary {
-  @apply border-primary-600 bg-primary-600 font-semibold text-white hover:border-primary-800 hover:bg-primary-800 hover:text-white dark:border-primary-700 dark:bg-primary-700 dark:text-white dark:hover:border-primary-900 dark:hover:bg-primary-900;
+  @apply border-[#C5001C] bg-[#C5001C] font-semibold text-white hover:border-[#111] hover:bg-[#111] hover:text-white;
+}
+
+@layer base {
+  ::selection {
+    background: #c5001c;
+    color: #fff;
+  }
+}
+
+@keyframes horizon-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes horizon-rise {
+  from {
+    transform: translateY(70%);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.horizon-line {
+  transform-origin: left center;
+  animation: horizon-draw 1.05s cubic-bezier(0.77, 0, 0.18, 1) both;
+}
+
+.horizon-sun {
+  animation: horizon-rise 1.25s cubic-bezier(0.16, 0.84, 0.28, 1) 0.45s both;
+}
+
+.hero-copy {
+  animation: hero-in 0.8s ease 0.1s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .horizon-line,
+  .horizon-sun,
+  .hero-copy {
+    animation: none;
+  }
+
+  .horizon-sun {
+    transform: translateY(-50%);
+  }
 }
 
 @utility card {

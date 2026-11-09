@@ -31,10 +31,11 @@ These are not arbitrary; changing them breaks the toolchain:
 
 ## Content
 
-Blog posts and legal pages are `.mdx` files under `src/content`, described by
-Zod schemas in `content-collections.ts`. Pages read them through
-`import { allPosts } from 'content-collections'` — never through the filesystem.
-Invalid frontmatter fails the build on purpose.
+Legal pages are `.mdx` files under `src/content/legal`, described by Zod schemas
+in `content-collections.ts`. Pages read them through
+`import { allLegals } from 'content-collections'` — never through the filesystem.
+Invalid frontmatter fails the build on purpose. Company facts live in
+`src/lib/company.ts`.
 
 ## Testing
 

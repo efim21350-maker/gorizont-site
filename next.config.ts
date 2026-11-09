@@ -13,6 +13,18 @@ const nextConfig: NextConfig = {
 
   poweredByHeader: false,
 
+  async redirects() {
+    return [
+      { source: '/about', destination: '/o-kompanii', permanent: false },
+      { source: '/services', destination: '/uslugi', permanent: false },
+      { source: '/contact', destination: '/kontakty', permanent: false },
+      { source: '/pricing', destination: '/stoimost', permanent: false },
+      { source: '/faqs', destination: '/voprosy', permanent: false },
+      { source: '/blog', destination: '/obekty', permanent: false },
+      { source: '/blog/:path*', destination: '/obekty', permanent: false },
+    ];
+  },
+
   async headers() {
     // React en desarrollo usa eval() para reconstruir callstacks y otras ayudas de
     // depuración; en producción nunca lo hace. Se relaja solo en dev para no

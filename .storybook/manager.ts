@@ -6,8 +6,8 @@ addons.setConfig({
     base: 'light',
 
     // Logo
-    brandTitle: 'TailNext',
-    brandUrl: 'https://github.com/arthelokyo/tailnext',
+    brandTitle: 'Горизонт',
+    brandUrl: 'https://github.com/efim21350-maker/gorizont-site',
     brandTarget: '_blank',
   }),
 });

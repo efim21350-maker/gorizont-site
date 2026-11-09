@@ -1,17 +1,19 @@
 import { Metadata, Viewport } from 'next';
+import { Inter, Manrope } from 'next/font/google';
 
 import { SITE } from '~/config';
+import { company } from '~/lib/company';
 
 import JsonLd from '~/components/common/JsonLd';
 import Providers from '~/components/atoms/Providers';
 import Header from '~/components/widgets/Header';
-import Announcement from '~/components/widgets/Announcement';
 import Footer2 from '~/components/widgets/Footer2';
+import { FeedbackProvider } from '~/components/feedback/FeedbackProvider';
 
-import { Inter as CustomFont } from 'next/font/google';
 import '~/assets/styles/base.css';
 
-const customFont = CustomFont({ subsets: ['latin'], variable: '--font-custom' });
+const inter = Inter({ subsets: ['latin', 'cyrillic'], variable: '--font-inter', display: 'swap' });
+const manrope = Manrope({ subsets: ['latin', 'cyrillic'], variable: '--font-manrope', display: 'swap' });
 
 export interface LayoutProps {
   children: React.ReactNode;
@@ -20,59 +22,67 @@ export interface LayoutProps {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
+  themeColor: '#111111',
 };
 
 export const metadata: Metadata = {
-  // Sin metadataBase, cualquier URL relativa de OG o canonical no resuelve.
   metadataBase: new URL(SITE.origin),
   title: {
     template: `%s — ${SITE.name}`,
     default: SITE.title,
   },
   description: SITE.description,
+  openGraph: {
+    locale: 'ru_RU',
+    siteName: SITE.name,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps) {
   return (
     <html
-      lang="en"
-      className={`motion-safe:scroll-smooth 2xl:text-[24px] ${customFont.variable} font-sans`}
+      lang="ru"
+      className={`motion-safe:scroll-smooth ${inter.variable} ${manrope.variable} font-sans`}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
-      <body className="tracking-tight text-gray-900 antialiased dark:bg-slate-900 dark:text-slate-300">
+      <body className="bg-[#f6f4f1] tracking-tight text-[#161616] antialiased">
         <JsonLd
           data={{
             '@context': 'https://schema.org',
-            '@graph': [
-              {
-                '@type': 'Organization',
-                '@id': `${SITE.origin}/#organization`,
-                name: SITE.name,
-                url: SITE.origin,
-              },
-              {
-                '@type': 'WebSite',
-                '@id': `${SITE.origin}/#website`,
-                name: SITE.name,
-                description: SITE.description,
-                url: SITE.origin,
-                publisher: { '@id': `${SITE.origin}/#organization` },
-              },
-            ],
+            '@type': 'GeneralContractor',
+            name: company.shortName,
+            legalName: company.fullName,
+            url: SITE.origin,
+            telephone: company.phoneTel,
+            email: [...company.emails],
+            taxID: company.inn,
+            address: {
+              '@type': 'PostalAddress',
+              postalCode: company.postalCode,
+              addressLocality: company.city,
+              streetAddress: company.street,
+              addressCountry: 'RU',
+            },
+            employee: {
+              '@type': 'Person',
+              name: company.director,
+              jobTitle: company.directorTitle,
+            },
           }}
         />
         <Providers>
-          <a
-            href="#main"
-            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-gray-900 focus:shadow-lg dark:focus:bg-slate-800 dark:focus:text-white"
-          >
-            Skip to content
-          </a>
-          <Announcement />
-          <Header />
-          <main id="main">{children}</main>
-          <Footer2 />
+          <FeedbackProvider>
+            <a
+              href="#main"
+              className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-white focus:px-4 focus:py-2 focus:text-[#111] focus:shadow-lg"
+            >
+              К содержанию
+            </a>
+            <Header />
+            <main id="main">{children}</main>
+            <Footer2 />
+          </FeedbackProvider>
         </Providers>
       </body>
     </html>
