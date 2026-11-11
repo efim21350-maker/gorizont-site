@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { BrandWordmark } from '~/components/atoms/Logo';
+import { BrandWordmark, SunSign } from '~/components/atoms/Logo';
 import { FeedbackButton } from '~/components/feedback/FeedbackProvider';
 import { company } from '~/lib/company';
 
@@ -24,17 +24,8 @@ function RoadScene() {
           <stop offset="70%" stopColor="#efe6da" />
           <stop offset="100%" stopColor="#e7d9c8" />
         </linearGradient>
-        <clipPath id="road-sun">
-          <circle cx="980" cy="250" r="72" />
-        </clipPath>
       </defs>
       <rect width="1200" height="720" fill="url(#road-sky)" />
-      <circle cx="980" cy="250" r="72" fill="#C5001C" />
-      <g clipPath="url(#road-sun)">
-        <rect x="890" y="266" width="180" height="9" fill="#fff" />
-        <rect x="890" y="284" width="180" height="9" fill="#fff" />
-        <rect x="890" y="302" width="180" height="9" fill="#fff" />
-      </g>
       <rect x="0" y="338" width="1200" height="4" fill="#111" />
       <rect x="0" y="342" width="1200" height="378" fill="#efe8df" />
       <polygon points="470,342 730,342 1020,720 180,720" fill="#ddd4c8" />
@@ -54,9 +45,14 @@ export default function HorizonHero() {
     <section className="relative isolate overflow-hidden bg-[#f6f4f1] text-[#111]">
       <RoadScene />
       <div className="absolute inset-0 bg-gradient-to-b from-[#f6f4f1]/95 via-[#f6f4f1]/82 to-[#f6f4f1]/40 md:bg-gradient-to-r md:from-[#f6f4f1]/96 md:via-[#f6f4f1]/78 md:to-[#f6f4f1]/20" />
-      <div className="relative z-10 mx-auto max-w-7xl px-5 pt-14 pb-16 md:pt-20 md:pr-[28%] md:pb-24">
-        <BrandWordmark className="text-3xl md:text-5xl" />
-        <p className="hero-copy mt-4 text-xs tracking-[0.2em] text-[#5c5c5c] uppercase">Санкт-Петербург</p>
+      <div className="relative z-10 mx-auto max-w-7xl px-5 pt-14 pb-16 md:pt-20 md:pb-24">
+        <div className="flex items-start justify-between gap-4">
+          <div className="min-w-0">
+            <BrandWordmark className="text-3xl md:text-5xl" />
+            <p className="hero-copy mt-4 text-xs tracking-[0.2em] text-[#5c5c5c] uppercase">Санкт-Петербург</p>
+          </div>
+          <SunSign className="mt-1 h-20 w-20 md:h-40 md:w-40" />
+        </div>
         <h1 className="hero-copy mt-5 max-w-5xl font-display text-[clamp(2.5rem,5.6vw,5rem)] leading-[0.96] font-semibold tracking-[-0.035em] text-[#111]">
           Благоустройство, дороги и наружные сети
         </h1>

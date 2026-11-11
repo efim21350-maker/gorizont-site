@@ -113,11 +113,31 @@
   animation: logo-reveal 0.85s ease both;
 }
 
+@keyframes logo-strike {
+  0% {
+    opacity: 0.2;
+    transform: translateX(36px) scale(0.9);
+  }
+  62% {
+    opacity: 1;
+    transform: translateX(-6px) scale(1.04);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.logo-strike {
+  animation: logo-strike 0.46s cubic-bezier(0.16, 0.84, 0.32, 1) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .horizon-line,
   .horizon-sun,
   .hero-copy,
-  .logo-reveal {
+  .logo-reveal,
+  .logo-strike {
     animation: none;
   }
 
