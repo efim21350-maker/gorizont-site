@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 import { buildMetadata } from '~/utils/metadata';
 import PageIntro from '~/components/site/PageIntro';
-import { company } from '~/lib/company';
+import { company, sroSummary } from '~/lib/company';
 
 export const metadata: Metadata = buildMetadata({
   title: 'Вопросы',
@@ -25,7 +25,7 @@ const items = [
   },
   {
     q: 'Есть ли допуск СРО?',
-    a: 'Да, компания состоит в СРО. Наименование организации и номер записи — [уточнить].',
+    a: sroSummary,
   },
   {
     q: 'Кто генеральный директор?',

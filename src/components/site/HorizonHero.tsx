@@ -5,7 +5,7 @@ import { company } from '~/lib/company';
 
 const facts = [
   { label: 'География', value: company.city },
-  { label: 'Допуск', value: 'Член СРО' },
+  { label: 'СРО', value: `ПОС № ${company.sro.memberNumber}` },
   { label: 'ОКВЭД', value: company.okved },
 ];
 

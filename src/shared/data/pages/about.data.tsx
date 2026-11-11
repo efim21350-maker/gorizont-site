@@ -21,7 +21,7 @@ export const hero2About: HeroProps = {
 export const statsAbout: StatsProps = {
   items: [
     { title: 'СПб', description: 'Город работ' },
-    { title: 'СРО', description: 'Членство есть, номер — [уточнить]' },
+    { title: 'ПОС № 1617', description: 'С 15.09.2026, по выписке от 16.09.2026' },
     { title: '81.30', description: 'ОКВЭД' },
     { title: '[уточнить]', description: 'Название группы' },
   ],
@@ -82,7 +82,13 @@ export const testimonials2About: TestimonialsProps = {
 };
 
 export const faqsAbout: FAQsProps = {
-  items: [{ title: 'Есть ли СРО?', description: 'Да. Наименование и номер записи — [уточнить].' }],
+  items: [
+    {
+      title: 'Есть ли СРО?',
+      description:
+        'Да. Ассоциация «ПОС», номер члена 1617, вступление 15.09.2026. Источник — выписка от 16.09.2026, без проверки текущего реестра.',
+    },
+  ],
 };
 
 export const contactAbout: ContactProps = {

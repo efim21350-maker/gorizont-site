@@ -6,7 +6,7 @@ import HorizonHero from '~/components/site/HorizonHero';
 import ServiceIndex from '~/components/site/ServiceIndex';
 import ContactRequestForm from '~/components/feedback/ContactRequestForm';
 import { FeedbackButton } from '~/components/feedback/FeedbackProvider';
-import { company } from '~/lib/company';
+import { company, sroSummary } from '~/lib/company';
 
 export const metadata: Metadata = buildMetadata({
   description:
@@ -74,9 +74,7 @@ export default function Page() {
               </div>
               <div className="border-t border-black/10 pt-4">
                 <dt className="text-xs tracking-[0.14em] text-[#8a8a8a] uppercase">СРО</dt>
-                <dd className="mt-2 text-base leading-relaxed">
-                  Членство есть. Наименование организации и номер записи — [уточнить].
-                </dd>
+                <dd className="mt-2 text-base leading-relaxed">{sroSummary}</dd>
               </div>
             </dl>
             <Link

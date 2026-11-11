@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { buildMetadata } from '~/utils/metadata';
 import PageIntro from '~/components/site/PageIntro';
-import { company } from '~/lib/company';
+import { company, sroSummary } from '~/lib/company';
 
 export const metadata: Metadata = buildMetadata({
   title: 'О компании',
@@ -44,8 +44,12 @@ export default function AboutPage() {
             </p>
             <div className="mt-8 border border-black/10 bg-white p-6">
               <p className="text-xs tracking-[0.16em] text-[#C5001C] uppercase">СРО</p>
+              <p className="mt-3 text-base leading-relaxed">{sroSummary}</p>
               <p className="mt-3 text-base leading-relaxed">
-                Компания состоит в саморегулируемой организации. Наименование СРО и номер записи в реестре — [уточнить].
+                В выписке № {company.sro.extractNo} отмечен первый уровень ответственности компенсационного фонда
+                возмещения вреда: стоимость работ по одному договору не превышает 90 млн руб. Уровни компенсационного
+                фонда договорных обязательств не отмечены. Допуска к особо опасным, технически сложным и уникальным
+                объектам и к объектам использования атомной энергии в этой выписке нет.
               </p>
             </div>
           </div>

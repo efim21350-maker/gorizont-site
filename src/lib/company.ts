@@ -19,7 +19,16 @@ export const company = {
   director: 'Гросу Иван',
   directorTitle: 'Генеральный директор',
   logo: '/brand/gorizont-logo.jpg',
+  sro: {
+    shortName: 'Ассоциация «ПОС»',
+    memberNumber: '1617',
+    joinedOn: '15.09.2026',
+    extractOn: '16.09.2026',
+    extractNo: 'ПОС 09/26-1617-3253',
+  },
 } as const;
+
+export const sroSummary = `Член ${company.sro.shortName}, номер ${company.sro.memberNumber}, вступление ${company.sro.joinedOn}. По выписке от ${company.sro.extractOn}; текущий реестр этой страницей не проверялся.`;
 
 export const nav = [
   { href: '/uslugi', label: 'Услуги' },
