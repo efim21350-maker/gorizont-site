@@ -10,7 +10,7 @@ import {
   TestimonialsProps,
 } from '../../types';
 
-const logo = { src: '/brand/gorizont-logo.jpg', alt: 'ГОРИЗОНТ' };
+const logo = { src: '/brand/gorizont-original.jpg', alt: 'ГОРИЗОНТ' };
 
 export const hero2About: HeroProps = {
   title: 'О компании',

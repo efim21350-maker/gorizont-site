@@ -300,6 +300,72 @@
   transform: none;
 }
 
+.assemble-layer {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}
+
+.is-playing .assemble-line {
+  transform: scaleX(0);
+  transform-origin: left center;
+  opacity: 1;
+  animation: assemble-line 0.28s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.is-playing .assemble-disk {
+  transform: scale(0);
+  transform-origin: 68% 46%;
+  opacity: 1;
+  animation: assemble-disk 0.26s cubic-bezier(0.16, 0.84, 0.24, 1) 0.32s forwards;
+}
+
+.is-playing .assemble-stripe {
+  opacity: 0;
+  animation: assemble-fade 0.16s ease forwards;
+}
+
+.is-playing .assemble-letter {
+  opacity: 0;
+  animation: assemble-letter 0.12s ease forwards;
+}
+
+.is-playing .assemble-full {
+  opacity: 0;
+  animation: assemble-fade 0.05s linear 1.9s forwards;
+}
+
+@keyframes assemble-line {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes assemble-disk {
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes assemble-fade {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes assemble-letter {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .horizon-line,
   .horizon-sun,

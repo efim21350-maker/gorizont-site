@@ -41,10 +41,10 @@ const Logo = () => {
     >
       <Image
         key={run}
-        src="/brand/gorizont-logo.jpg"
+        src="/brand/gorizont-original.jpg"
         alt="ГОРИЗОНТ"
-        width={1717}
-        height={585}
+        width={1920}
+        height={691}
         priority
         className={`${className} h-12 w-auto md:h-16`}
       />

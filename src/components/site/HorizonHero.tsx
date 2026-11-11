@@ -1,7 +1,6 @@
 import Link from 'next/link';
 
 import { BrandWordmark } from '~/components/atoms/Logo';
-import { RoadMarkButton } from '~/components/site/RoadMarkButton';
 import { FeedbackButton } from '~/components/feedback/FeedbackProvider';
 import { company } from '~/lib/company';
 
@@ -47,13 +46,8 @@ export default function HorizonHero() {
       <RoadScene />
       <div className="absolute inset-0 bg-gradient-to-b from-[#f6f4f1]/95 via-[#f6f4f1]/82 to-[#f6f4f1]/40 md:bg-gradient-to-r md:from-[#f6f4f1]/96 md:via-[#f6f4f1]/78 md:to-[#f6f4f1]/20" />
       <div className="relative z-10 mx-auto max-w-7xl px-5 pt-14 pb-16 md:pt-20 md:pb-24">
-        <div className="flex items-start justify-between gap-4">
-          <div className="min-w-0">
-            <BrandWordmark className="text-3xl md:text-5xl" />
-            <p className="hero-copy mt-4 text-xs tracking-[0.2em] text-[#5c5c5c] uppercase">Санкт-Петербург</p>
-          </div>
-          <RoadMarkButton className="h-40 w-32 md:h-56 md:w-52" />
-        </div>
+        <BrandWordmark className="text-3xl md:text-5xl" />
+        <p className="hero-copy mt-4 text-xs tracking-[0.2em] text-[#5c5c5c] uppercase">Санкт-Петербург</p>
         <h1 className="hero-copy mt-5 max-w-5xl font-display text-[clamp(2.5rem,5.6vw,5rem)] leading-[0.96] font-semibold tracking-[-0.035em] text-[#111]">
           Благоустройство, дороги и наружные сети
         </h1>

@@ -9,6 +9,7 @@ import Providers from '~/components/atoms/Providers';
 import Header from '~/components/widgets/Header';
 import Footer2 from '~/components/widgets/Footer2';
 import { FeedbackProvider } from '~/components/feedback/FeedbackProvider';
+import { LogoAssemble } from '~/components/site/LogoAssemble';
 
 import '~/assets/styles/base.css';
 
@@ -74,6 +75,7 @@ export default function RootLayout({ children }: LayoutProps) {
               К содержанию
             </a>
             <Header />
+            <LogoAssemble />
             <main id="main">{children}</main>
             <Footer2 />
           </FeedbackProvider>
