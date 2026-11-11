@@ -17,7 +17,7 @@ const logo = { src: '/brand/gorizont-logo.jpg', alt: 'ГОРИЗОНТ' };
 
 export const heroHome: HeroProps = {
   title: 'Благоустройство, дороги и наружные сети',
-  subtitle: 'ООО «Горизонт» — подряд для застройщиков в Санкт-Петербурге.',
+  subtitle: 'ООО «Горизонт» — земляные работы, благоустройство, дороги и наружные сети в Санкт-Петербурге.',
   callToAction: { text: 'Услуги', href: '/uslugi' },
   callToAction2: { text: 'Контакты', href: '/kontakty' },
 };

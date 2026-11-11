@@ -17,9 +17,9 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-40 border-b border-black/10 bg-white/95 backdrop-blur">
       <div className="mx-auto flex h-[4.5rem] max-w-7xl items-center gap-4 px-4 md:px-5">
-        <Link href="/" className="shrink-0" onClick={close} aria-label="На главную">
+        <span className="shrink-0" onClick={close}>
           <Logo />
-        </Link>
+        </span>
         <nav className="ml-6 hidden items-center gap-6 lg:flex" aria-label="Основное меню">
           {nav.map((item) => (
             <Link
