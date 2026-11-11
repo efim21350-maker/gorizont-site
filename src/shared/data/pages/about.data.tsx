@@ -59,11 +59,11 @@ export const featuresAbout: FeaturesProps = {
 };
 
 export const teamAbout: TeamProps = {
-  header: { title: 'Директор' },
+  header: { title: 'Команда' },
   teams: [
     {
-      name: 'Гросу Иван',
-      occupation: 'Генеральный директор',
+      name: 'Не публикуется',
+      occupation: 'Состав не указан',
       image: logo,
       items: [{ title: 'Почта', icon: IconMail, href: 'mailto:ivangrosu127@gmail.com' }],
     },

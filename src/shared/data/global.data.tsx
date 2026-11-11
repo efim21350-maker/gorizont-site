@@ -11,10 +11,8 @@ export const announcementData: AnnouncementProps = {
 export const headerData: HeaderProps = {
   links: [
     { label: 'Услуги', href: '/uslugi' },
-    { label: 'О компании', href: '/o-kompanii' },
+    { label: 'Компания', href: '/o-kompanii' },
     { label: 'Объекты', href: '/obekty' },
-    { label: 'Стоимость', href: '/stoimost' },
-    { label: 'Контакты', href: '/kontakty' },
   ],
   actions: [],
   isSticky: true,
@@ -55,10 +53,6 @@ export const footerData2: FooterProps = {
     {
       title: 'Адрес',
       texts: ['195009, Санкт-Петербург', 'Кондратьевский пр., д.2, к.4, лит.А, пом.5-Н, оф.216/2'],
-    },
-    {
-      title: 'Телефон',
-      texts: ['8 (911) 135-03-36'],
     },
     {
       title: 'Почта',

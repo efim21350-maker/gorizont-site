@@ -82,7 +82,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         ok: false,
-        error: `Письмо не ушло. Напишите на ${company.emails[0]} или ${company.emails[1]} либо позвоните ${company.phoneDisplay}.`,
+        error: `Письмо не ушло. Напишите на ${company.emails[0]} или ${company.emails[1]}.`,
       },
       { status: 502 },
     );

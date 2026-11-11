@@ -7,7 +7,7 @@ const Logo = () => (
     width={1717}
     height={585}
     priority
-    className="h-11 w-auto md:h-14"
+    className="h-12 w-auto md:h-16"
   />
 );
 

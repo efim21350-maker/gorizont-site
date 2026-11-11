@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 import Logo from '~/components/atoms/Logo';
 import ToggleMenu from '~/components/atoms/ToggleMenu';
 import { FeedbackButton } from '~/components/feedback/FeedbackProvider';
-import { company, nav } from '~/lib/company';
+import { nav } from '~/lib/company';
 
 const Header = () => {
   const pathname = usePathname();
@@ -33,9 +33,6 @@ const Header = () => {
           ))}
         </nav>
         <div className="ml-auto flex items-center gap-3">
-          <a href={`tel:${company.phoneTel}`} className="hidden text-sm font-medium text-[#111] xl:inline">
-            {company.phoneDisplay}
-          </a>
           <FeedbackButton className="btn btn-primary px-4 py-2 text-sm md:px-5">Обратная связь</FeedbackButton>
           <div className="lg:hidden">
             <ToggleMenu handleToggleMenuOnClick={() => setIsOpen((value) => !value)} isToggleMenuOpen={isOpen} />
@@ -57,11 +54,6 @@ const Header = () => {
                 </Link>
               </li>
             ))}
-            <li>
-              <a href={`tel:${company.phoneTel}`} className="block py-3 text-lg">
-                {company.phoneDisplay}
-              </a>
-            </li>
           </ul>
         </nav>
       ) : null}

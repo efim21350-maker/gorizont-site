@@ -3,8 +3,6 @@
 import { FormEvent, useId, useState } from 'react';
 import Link from 'next/link';
 
-import { company } from '~/lib/company';
-
 type Status = 'idle' | 'sending' | 'success' | 'error';
 
 const initial = { name: '', phone: '', email: '', message: '', consent: false, website: '' };
@@ -65,7 +63,7 @@ export default function ContactRequestForm({ idPrefix }: { idPrefix?: string }) 
 
       if (!response.ok || !payload?.ok) {
         setStatus('error');
-        setError(payload?.error || 'Не удалось отправить заявку. Попробуйте ещё раз или позвоните нам.');
+        setError(payload?.error || 'Не удалось отправить заявку. Письмо не отправлено. Напишите на почту компании.');
         return;
       }
 
@@ -73,7 +71,7 @@ export default function ContactRequestForm({ idPrefix }: { idPrefix?: string }) 
       setValues(initial);
     } catch {
       setStatus('error');
-      setError('Нет связи с сервером. Позвоните или напишите на почту компании.');
+      setError('Нет связи с сервером. Письмо не отправлено. Напишите на почту компании.');
     }
   };
 
@@ -82,8 +80,7 @@ export default function ContactRequestForm({ idPrefix }: { idPrefix?: string }) 
       <div className="border border-[#111] bg-white p-6 md:p-8" role="status">
         <p className="font-display text-2xl tracking-tight text-[#111]">Заявка отправлена</p>
         <p className="mt-3 text-base leading-relaxed text-[#3a3a3a]">
-          Мы получили сообщение и ответим на указанные контакты. Срок ответа — [уточнить]. Если вопрос срочный,
-          позвоните {company.phoneDisplay}.
+          Мы получили сообщение и ответим на указанные контакты. Срок ответа — [уточнить].
         </p>
         <button
           type="button"

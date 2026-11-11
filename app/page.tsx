@@ -10,24 +10,19 @@ import { company, sroSummary } from '~/lib/company';
 
 export const metadata: Metadata = buildMetadata({
   description:
-    'ООО «Горизонт» — строительная компания в Санкт-Петербурге: благоустройство и ландшафт, земляные работы, дорожное строительство, наружные сети водоснабжения и канализации.',
+    'ООО «Горизонт» — подряд для застройщиков в Санкт-Петербурге: благоустройство и ландшафт, земляные работы, дороги и наружные сети.',
 });
 
 const steps = [
   {
     num: '01',
     title: 'Опишите объект',
-    text: 'Напишите, какие работы нужны и где находится площадка. Форма, телефон и почта компании равнозначны.',
+    text: 'Напишите, какие работы нужны и где находится площадка. Для этого есть форма и почта компании.',
   },
   {
     num: '02',
     title: 'Передайте исходные данные',
     text: 'Если есть проект или техническое задание, их можно обсудить после первого сообщения. Обязательный комплект документов — [уточнить].',
-  },
-  {
-    num: '03',
-    title: 'Расчёт по проекту',
-    text: 'Стоимость на сайте не указана. Её считаем по конкретному объекту, без типового прайса.',
   },
 ];
 
@@ -67,11 +62,7 @@ export default function Page() {
               сети водоснабжения и канализации. Компания позиционируется как строительная операционная компания группы.
               Название группы — [уточнить].
             </p>
-            <dl className="mt-8 grid gap-5 sm:grid-cols-2">
-              <div className="border-t border-black/10 pt-4">
-                <dt className="text-xs tracking-[0.14em] text-[#8a8a8a] uppercase">{company.directorTitle}</dt>
-                <dd className="mt-2 font-display text-2xl tracking-tight">{company.director}</dd>
-              </div>
+            <dl className="mt-8">
               <div className="border-t border-black/10 pt-4">
                 <dt className="text-xs tracking-[0.14em] text-[#8a8a8a] uppercase">СРО</dt>
                 <dd className="mt-2 text-base leading-relaxed">{sroSummary}</dd>
@@ -91,7 +82,7 @@ export default function Page() {
         <div className="mx-auto max-w-7xl px-5 py-20 md:py-28">
           <p className="text-xs tracking-[0.2em] text-[#C5001C] uppercase">Как начать</p>
           <h2 className="mt-3 max-w-2xl font-display text-4xl tracking-tight text-[#111] md:text-5xl">
-            Заявка вместо прайс-листа
+            Как отправить заявку
           </h2>
           <ol className="mt-12 grid gap-8 md:grid-cols-3">
             {steps.map((step) => (
@@ -137,15 +128,8 @@ export default function Page() {
         <div className="mx-auto grid max-w-7xl gap-12 px-5 py-20 md:grid-cols-12 md:py-28">
           <div className="md:col-span-5">
             <p className="text-xs tracking-[0.2em] text-[#C5001C] uppercase">Контакты</p>
-            <h2 className="mt-3 font-display text-4xl tracking-tight text-[#111] md:text-5xl">
-              Напишите или позвоните
-            </h2>
+            <h2 className="mt-3 font-display text-4xl tracking-tight text-[#111] md:text-5xl">Напишите</h2>
             <p className="mt-5 text-base leading-relaxed text-[#3a3a3a]">{company.address}</p>
-            <p className="mt-4">
-              <a className="font-display text-2xl tracking-tight hover:text-[#C5001C]" href={`tel:${company.phoneTel}`}>
-                {company.phoneDisplay}
-              </a>
-            </p>
             <ul className="mt-4 space-y-1">
               {company.emails.map((email) => (
                 <li key={email}>
@@ -155,9 +139,7 @@ export default function Page() {
                 </li>
               ))}
             </ul>
-            <p className="mt-6 text-sm leading-relaxed text-[#5c5c5c]">
-              {company.directorTitle}: {company.director}. Режим работы — [уточнить].
-            </p>
+            <p className="mt-6 text-sm leading-relaxed text-[#5c5c5c]">Режим работы — [уточнить].</p>
             <FeedbackButton className="mt-8 btn btn-primary md:hidden">Обратная связь</FeedbackButton>
           </div>
           <div className="md:col-span-7">

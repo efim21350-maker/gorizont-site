@@ -14,10 +14,6 @@ export const company = {
   street: 'Кондратьевский пр., д.2, к.4, лит.А, пом.5-Н, оф.216/2',
   address: '195009, Санкт-Петербург, Кондратьевский пр., д.2, к.4, лит.А, пом.5-Н, оф.216/2',
   emails: ['ivangrosu127@gmail.com', 'buh.gorizont@internet.ru'] as const,
-  phoneDisplay: '8 (911) 135-03-36',
-  phoneTel: '+79111350336',
-  director: 'Гросу Иван',
-  directorTitle: 'Генеральный директор',
   logo: '/brand/gorizont-logo.jpg',
   sro: {
     shortName: 'Ассоциация «ПОС»',
@@ -32,10 +28,8 @@ export const sroSummary = `Член ${company.sro.shortName}, номер ${compa
 
 export const nav = [
   { href: '/uslugi', label: 'Услуги' },
-  { href: '/o-kompanii', label: 'О компании' },
+  { href: '/o-kompanii', label: 'Компания' },
   { href: '/obekty', label: 'Объекты' },
-  { href: '/stoimost', label: 'Стоимость' },
-  { href: '/kontakty', label: 'Контакты' },
 ] as const;
 
 export const services = [
@@ -43,7 +37,7 @@ export const services = [
     num: '01',
     title: 'Благоустройство и ландшафт',
     lead: 'Профильное направление',
-    text: 'Благоустройство территории и ландшафтные работы в Санкт-Петербурге. Вид деятельности подтверждается ОКВЭД 81.30 — деятельность по благоустройству ландшафта. Состав работ на конкретном объекте задаёт проект, а не типовой прайс.',
+    text: 'Благоустройство территории и ландшафтные работы в Санкт-Петербурге. Вид деятельности подтверждается ОКВЭД 81.30 — деятельность по благоустройству ландшафта. Состав работ на конкретном объекте задаёт проект.',
   },
   {
     num: '02',
@@ -67,4 +61,4 @@ export const services = [
 
 export const mapHref = `https://yandex.ru/maps/?text=${encodeURIComponent(company.address)}`;
 
-export const mailFailureMessage = `Не удалось отправить заявку: почта на сайте ещё не подключена. Напишите на ${company.emails[0]} или ${company.emails[1]} либо позвоните ${company.phoneDisplay}.`;
+export const mailFailureMessage = `Не удалось отправить заявку: почта на сайте ещё не подключена. Письмо не отправлено. Напишите на ${company.emails[0]} или ${company.emails[1]}.`;

@@ -7,7 +7,7 @@ import { company, sroSummary } from '~/lib/company';
 
 export const metadata: Metadata = buildMetadata({
   title: 'О компании',
-  description: 'ООО «Горизонт» — строительная компания в Санкт-Петербурге. Директор, членство в СРО и реквизиты.',
+  description: 'ООО «Горизонт» — строительная компания в Санкт-Петербурге. Членство в СРО и реквизиты.',
   path: '/o-kompanii',
 });
 
@@ -20,7 +20,6 @@ const requisites = [
   ['ОКПО', company.okpo],
   ['ОКВЭД', `${company.okved} — ${company.okvedTitle}`],
   ['Юридический и фактический адрес', company.address],
-  [company.directorTitle, company.director],
 ];
 
 export default function AboutPage() {
@@ -33,7 +32,7 @@ export default function AboutPage() {
       />
       <section className="bg-[#f6f4f1]">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 md:grid-cols-12 md:py-24">
-          <div className="md:col-span-7">
+          <div className="md:col-span-12">
             <p className="text-lg leading-relaxed text-[#222]">
               {company.fullName} позиционируется как строительная операционная компания группы. Название группы —
               [уточнить]. Публичных объёмов, лет на рынке и списка заказчиков на сайте нет: эти сведения не подтверждены
@@ -53,14 +52,6 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-          <aside className="md:col-span-5">
-            <p className="text-xs tracking-[0.16em] text-[#8a8a8a] uppercase">Руководитель</p>
-            <p className="mt-3 font-display text-4xl tracking-tight">{company.director}</p>
-            <p className="mt-2 text-[#3a3a3a]">{company.directorTitle}</p>
-            <p className="mt-6 text-sm leading-relaxed text-[#5c5c5c]">
-              Действует на основании устава. Банковские реквизиты на сайте не публикуются — их направляем по запросу.
-            </p>
-          </aside>
         </div>
       </section>
       <section className="bg-white">

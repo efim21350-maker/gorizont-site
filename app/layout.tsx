@@ -54,7 +54,6 @@ export default function RootLayout({ children }: LayoutProps) {
             name: company.shortName,
             legalName: company.fullName,
             url: SITE.origin,
-            telephone: company.phoneTel,
             email: [...company.emails],
             taxID: company.inn,
             address: {
@@ -63,11 +62,6 @@ export default function RootLayout({ children }: LayoutProps) {
               addressLocality: company.city,
               streetAddress: company.street,
               addressCountry: 'RU',
-            },
-            employee: {
-              '@type': 'Person',
-              name: company.director,
-              jobTitle: company.directorTitle,
             },
           }}
         />

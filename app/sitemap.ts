@@ -7,7 +7,6 @@ const STATIC_ROUTES = [
   { path: '/uslugi', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/o-kompanii', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/obekty', changeFrequency: 'monthly', priority: 0.6 },
-  { path: '/stoimost', changeFrequency: 'yearly', priority: 0.6 },
   { path: '/kontakty', changeFrequency: 'yearly', priority: 0.7 },
   { path: '/voprosy', changeFrequency: 'yearly', priority: 0.4 },
   { path: '/privacy', changeFrequency: 'yearly', priority: 0.3 },

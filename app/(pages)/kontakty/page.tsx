@@ -7,7 +7,7 @@ import { company, mapHref } from '~/lib/company';
 
 export const metadata: Metadata = buildMetadata({
   title: 'Контакты',
-  description: 'Адрес, телефон и почта ООО «Горизонт» в Санкт-Петербурге. Форма обратной связи.',
+  description: 'Адрес и почта ООО «Горизонт» в Санкт-Петербурге. Форма обратной связи.',
   path: '/kontakty',
 });
 
@@ -34,14 +34,6 @@ export default function ContactsPage() {
                 </dd>
               </div>
               <div>
-                <dt className="text-xs tracking-[0.14em] text-[#8a8a8a] uppercase">Телефон</dt>
-                <dd className="mt-2">
-                  <a className="font-display text-2xl tracking-tight" href={`tel:${company.phoneTel}`}>
-                    {company.phoneDisplay}
-                  </a>
-                </dd>
-              </div>
-              <div>
                 <dt className="text-xs tracking-[0.14em] text-[#8a8a8a] uppercase">Почта</dt>
                 <dd className="mt-2 space-y-1">
                   {company.emails.map((email) => (
@@ -54,10 +46,6 @@ export default function ContactsPage() {
                     </a>
                   ))}
                 </dd>
-              </div>
-              <div>
-                <dt className="text-xs tracking-[0.14em] text-[#8a8a8a] uppercase">{company.directorTitle}</dt>
-                <dd className="mt-2">{company.director}</dd>
               </div>
               <div>
                 <dt className="text-xs tracking-[0.14em] text-[#8a8a8a] uppercase">Реквизиты</dt>

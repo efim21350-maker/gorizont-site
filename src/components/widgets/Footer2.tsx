@@ -22,6 +22,11 @@ const Footer2 = () => (
             </li>
           ))}
           <li>
+            <Link href="/kontakty" className="hover:text-[#C5001C]">
+              Контакты
+            </Link>
+          </li>
+          <li>
             <Link href="/voprosy" className="hover:text-[#C5001C]">
               Вопросы
             </Link>
@@ -31,12 +36,7 @@ const Footer2 = () => (
       <div className="md:col-span-3">
         <p className="text-xs tracking-[0.16em] text-[#8a8a8a] uppercase">Контакты</p>
         <p className="mt-4 text-sm leading-relaxed">{company.address}</p>
-        <p className="mt-3 text-sm">
-          <a href={`tel:${company.phoneTel}`} className="hover:text-[#C5001C]">
-            {company.phoneDisplay}
-          </a>
-        </p>
-        <ul className="mt-2 space-y-1 text-sm">
+        <ul className="mt-3 space-y-1 text-sm">
           {company.emails.map((email) => (
             <li key={email}>
               <a href={`mailto:${email}`} className="hover:text-[#C5001C]">
@@ -71,9 +71,7 @@ const Footer2 = () => (
     </div>
     <div className="border-t border-black/10">
       <div className="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-6 text-sm text-[#5c5c5c] md:flex-row md:items-center md:justify-between">
-        <p>
-          © {company.shortName}. {company.directorTitle} — {company.director}.
-        </p>
+        <p>© {company.shortName}.</p>
         <p className="flex flex-wrap gap-x-4 gap-y-2">
           <Link href="/privacy" className="hover:text-[#111]">
             Конфиденциальность

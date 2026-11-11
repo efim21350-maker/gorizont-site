@@ -1,4 +1,4 @@
-import { IconMail, IconMapPin, IconPhoneCall } from '@tabler/icons-react';
+import { IconMail, IconMapPin } from '@tabler/icons-react';
 import {
   CallToActionProps,
   ContactProps,
@@ -17,7 +17,7 @@ const logo = { src: '/brand/gorizont-logo.jpg', alt: 'ГОРИЗОНТ' };
 
 export const heroHome: HeroProps = {
   title: 'Благоустройство, дороги и наружные сети',
-  subtitle: 'ООО «Горизонт» — строительная компания в Санкт-Петербурге. Стоимость считается по проекту.',
+  subtitle: 'ООО «Горизонт» — подряд для застройщиков в Санкт-Петербурге.',
   callToAction: { text: 'Услуги', href: '/uslugi' },
   callToAction2: { text: 'Контакты', href: '/kontakty' },
 };
@@ -44,7 +44,6 @@ export const contentHomeOne: ContentProps = {
   content:
     'ООО «Горизонт» — строительная операционная компания группы в Санкт-Петербурге. Название группы — [уточнить].',
   items: [
-    { title: 'Директор', description: 'Гросу Иван' },
     {
       title: 'СРО',
       description:
@@ -65,7 +64,6 @@ export const stepsHome: StepsProps = {
   items: [
     { title: 'Опишите объект', description: 'Вид работ и район в Санкт-Петербурге.' },
     { title: 'Исходные данные', description: 'Комплект документов — [уточнить].' },
-    { title: 'Расчёт', description: 'Стоимость рассчитывается по проекту.' },
   ],
 };
 
@@ -82,10 +80,7 @@ export const testimonialsHome: TestimonialsProps = {
 
 export const faqs2Home: FAQsProps = {
   header: { title: 'Вопросы' },
-  items: [
-    { title: 'Где работаете?', description: 'В Санкт-Петербурге. Выезд за город — [уточнить].' },
-    { title: 'Сколько стоит?', description: 'Стоимость рассчитывается по проекту. Прайс-листа нет.' },
-  ],
+  items: [{ title: 'Где работаете?', description: 'В Санкт-Петербурге. Выезд за город — [уточнить].' }],
 };
 
 export const pricingHome: PricingProps = {
@@ -97,23 +92,20 @@ export const pricingHome: PricingProps = {
 };
 
 export const teamHome: TeamProps = {
-  header: { title: 'Руководитель' },
+  header: { title: 'Команда' },
   teams: [
     {
-      name: 'Гросу Иван',
-      occupation: 'Генеральный директор',
+      name: 'Не публикуется',
+      occupation: 'Состав не указан',
       image: logo,
-      items: [
-        { title: 'Почта', icon: IconMail, href: 'mailto:ivangrosu127@gmail.com' },
-        { title: 'Телефон', icon: IconPhoneCall, href: 'tel:+79111350336' },
-      ],
+      items: [{ title: 'Почта', icon: IconMail, href: 'mailto:ivangrosu127@gmail.com' }],
     },
   ],
 };
 
 export const contactHome: ContactProps = {
   header: { title: 'Контакты', subtitle: 'Санкт-Петербург' },
-  content: 'Заявка, телефон или почта компании.',
+  content: 'Заявка или почта компании.',
   items: [
     {
       title: 'Адрес',
@@ -122,8 +114,8 @@ export const contactHome: ContactProps = {
     },
     {
       title: 'Связь',
-      description: ['8 (911) 135-03-36', 'ivangrosu127@gmail.com', 'buh.gorizont@internet.ru'],
-      icon: IconPhoneCall,
+      description: ['ivangrosu127@gmail.com', 'buh.gorizont@internet.ru'],
+      icon: IconMail,
     },
   ],
   form: {

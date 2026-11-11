@@ -1,10 +1,10 @@
-import { IconMail, IconMapPin, IconPhoneCall } from '@tabler/icons-react';
+import { IconMail, IconMapPin } from '@tabler/icons-react';
 import { ContactProps, FeaturesProps, HeroProps } from '../../types';
 
 export const heroContact: HeroProps = {
   title: 'Контакты',
   subtitle: '195009, Санкт-Петербург, Кондратьевский пр., д.2, к.4, лит.А, пом.5-Н, оф.216/2',
-  callToAction: { text: 'Позвонить', href: 'tel:+79111350336' },
+  callToAction: { text: 'Написать', href: 'mailto:ivangrosu127@gmail.com' },
 };
 
 export const contact2Contact: ContactProps = {
@@ -15,7 +15,6 @@ export const contact2Contact: ContactProps = {
       description: ['Кондратьевский пр., д.2, к.4, лит.А, пом.5-Н, оф.216/2'],
       icon: IconMapPin,
     },
-    { title: 'Телефон', description: ['8 (911) 135-03-36'], icon: IconPhoneCall },
     {
       title: 'Почта',
       description: ['ivangrosu127@gmail.com', 'buh.gorizont@internet.ru'],
@@ -38,6 +37,6 @@ export const features2Contact: FeaturesProps = {
   header: { title: 'Реквизиты' },
   items: [
     { title: 'ИНН 7806539746', description: 'КПП 780401001' },
-    { title: 'ОГРН 1187847091651', description: 'Директор — Гросу Иван' },
+    { title: 'ОГРН 1187847091651', description: 'ОКПО 28116336' },
   ],
 };
