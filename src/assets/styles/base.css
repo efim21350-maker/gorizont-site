@@ -132,13 +132,199 @@
   animation: logo-strike 0.46s cubic-bezier(0.16, 0.84, 0.32, 1) both;
 }
 
+.road-mark {
+  position: relative;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.road-mark-stage,
+.road-mark-road {
+  position: absolute;
+  inset: 0;
+}
+
+.road-mark-road {
+  display: flex;
+  justify-content: center;
+  opacity: 1;
+}
+
+.road-mark-dashes {
+  width: 2.6rem;
+  height: 100%;
+  border-radius: 2px;
+  background:
+    repeating-linear-gradient(to bottom, #fff 0 8px, transparent 8px 20px) center / 3px 100% no-repeat,
+    #c8c2ba;
+}
+
+.road-mark.is-built .road-mark-road {
+  animation: road-mark-out 0.2s ease forwards;
+}
+
+.road-mark-line {
+  position: absolute;
+  top: 42%;
+  right: 0;
+  left: 0;
+  height: 4px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: #111;
+}
+
+.road-mark.is-built .road-mark-line {
+  animation: road-mark-line 0.32s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s forwards;
+}
+
+.road-mark-disk-slot {
+  position: absolute;
+  top: 42%;
+  right: 0;
+  width: 46%;
+  height: 42%;
+  transform: translateY(-50%);
+}
+
+.road-mark-disk {
+  position: relative;
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform: scale(0);
+  transform-origin: center;
+  overflow: hidden;
+  border-radius: 9999px;
+  background: #c5001c;
+}
+
+.road-mark.is-built .road-mark-disk {
+  animation: road-mark-disk 0.28s cubic-bezier(0.16, 0.84, 0.24, 1) 0.52s forwards;
+}
+
+.road-mark-stripe {
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: 9%;
+  opacity: 0;
+  background: #fff;
+}
+
+.road-mark-stripe:nth-child(1) {
+  top: 54%;
+}
+
+.road-mark-stripe:nth-child(2) {
+  top: 68%;
+}
+
+.road-mark-stripe:nth-child(3) {
+  top: 82%;
+}
+
+.road-mark.is-built .road-mark-stripe {
+  animation: road-mark-stripe 0.16s ease forwards;
+}
+
+.road-mark-name {
+  position: absolute;
+  top: 58%;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0;
+}
+
+.road-mark-letter {
+  opacity: 0;
+}
+
+.road-mark.is-built .road-mark-letter {
+  animation: road-mark-letter 0.14s ease forwards;
+}
+
+@keyframes road-mark-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes road-mark-line {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes road-mark-disk {
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes road-mark-stripe {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes road-mark-letter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.road-mark.is-reduced.is-built .road-mark-road {
+  animation: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.road-mark.is-reduced.is-built .road-mark-line,
+.road-mark.is-reduced.is-built .road-mark-disk,
+.road-mark.is-reduced.is-built .road-mark-stripe,
+.road-mark.is-reduced.is-built .road-mark-letter {
+  animation: none;
+  opacity: 1;
+  transform: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .horizon-line,
   .horizon-sun,
   .hero-copy,
   .logo-reveal,
-  .logo-strike {
+  .logo-strike,
+  .road-mark.is-built .road-mark-road,
+  .road-mark.is-built .road-mark-line,
+  .road-mark.is-built .road-mark-disk,
+  .road-mark.is-built .road-mark-stripe,
+  .road-mark.is-built .road-mark-letter {
     animation: none;
+  }
+
+  .road-mark.is-built .road-mark-road {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .road-mark.is-built .road-mark-line,
+  .road-mark.is-built .road-mark-disk,
+  .road-mark.is-built .road-mark-stripe,
+  .road-mark.is-built .road-mark-letter {
+    opacity: 1;
+    transform: none;
   }
 
   .horizon-sun {

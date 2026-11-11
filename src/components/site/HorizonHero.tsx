@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
-import { BrandWordmark, SunSign } from '~/components/atoms/Logo';
+import { BrandWordmark } from '~/components/atoms/Logo';
+import { RoadMarkButton } from '~/components/site/RoadMarkButton';
 import { FeedbackButton } from '~/components/feedback/FeedbackProvider';
 import { company } from '~/lib/company';
 
@@ -51,7 +52,7 @@ export default function HorizonHero() {
             <BrandWordmark className="text-3xl md:text-5xl" />
             <p className="hero-copy mt-4 text-xs tracking-[0.2em] text-[#5c5c5c] uppercase">Санкт-Петербург</p>
           </div>
-          <SunSign className="mt-1 h-20 w-20 md:h-40 md:w-40" />
+          <RoadMarkButton className="h-40 w-32 md:h-56 md:w-52" />
         </div>
         <h1 className="hero-copy mt-5 max-w-5xl font-display text-[clamp(2.5rem,5.6vw,5rem)] leading-[0.96] font-semibold tracking-[-0.035em] text-[#111]">
           Благоустройство, дороги и наружные сети

@@ -62,21 +62,4 @@ export function BrandWordmark({ className = '' }: { className?: string }) {
   );
 }
 
-export function SunSign({ className = '' }: { className?: string }) {
-  return (
-    <button
-      type="button"
-      aria-label="Показать название Горизонт"
-      className={`group relative shrink-0 overflow-hidden rounded-full bg-[#C5001C] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#111] ${className}`}
-      onClick={() => {
-        window.dispatchEvent(new CustomEvent(LOGO_REPLAY_EVENT, { detail: { sharp: true } }));
-      }}
-    >
-      <span className="absolute inset-x-0 top-[54%] h-[9%] bg-white" />
-      <span className="absolute inset-x-0 top-[68%] h-[9%] bg-white" />
-      <span className="absolute inset-x-0 top-[82%] h-[9%] bg-white" />
-    </button>
-  );
-}
-
 export default Logo;
