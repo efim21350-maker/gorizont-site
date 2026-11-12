@@ -26,13 +26,13 @@ export default function ProjectsPage() {
             {objects.map((item) => (
               <article key={item.title} className="bg-white">
                 <figure>
-                  <div className="relative">
+                  <div className={item.roads ? 'relative aspect-[1920/1079]' : 'relative'}>
                     <img
                       src={item.image}
                       alt={item.alt}
                       width={item.width}
                       height={item.height}
-                      className="block h-auto w-full"
+                      className={item.roads ? 'absolute inset-0 h-full w-full object-fill' : 'block h-auto w-full'}
                     />
                     {item.roads ? (
                       <svg
@@ -41,8 +41,27 @@ export default function ProjectsPage() {
                         preserveAspectRatio="none"
                         aria-hidden="true"
                       >
-                        {roadHighlight.map((points) => (
-                          <polygon key={points} points={points} fill="#C5001C" fillOpacity="0.42" />
+                        {roadHighlight.map((road, index) => (
+                          <g key={road.points}>
+                            {[
+                              { stroke: '#fff', opacity: 0.92, width: road.width + 4 },
+                              { stroke: '#C5001C', opacity: 0.62, width: road.width },
+                            ].map((layer) => (
+                              <polyline
+                                key={layer.stroke}
+                                points={road.points}
+                                fill="none"
+                                stroke={layer.stroke}
+                                strokeOpacity={layer.opacity}
+                                strokeWidth={layer.width}
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                pathLength={1}
+                                className="road-draw"
+                                style={{ animationDelay: `${index * 0.18}s` }}
+                              />
+                            ))}
+                          </g>
                         ))}
                       </svg>
                     ) : null}

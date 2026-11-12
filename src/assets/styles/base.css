@@ -367,6 +367,18 @@
   }
 }
 
+.road-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: road-draw 1.5s ease forwards;
+}
+
+@keyframes road-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .horizon-line,
   .horizon-sun,
@@ -396,6 +408,11 @@
 
   .horizon-sun {
     transform: translateY(-50%);
+  }
+
+  .road-draw {
+    animation: none;
+    stroke-dashoffset: 0;
   }
 }
 

@@ -56,6 +56,12 @@ export const objects: ObjectCard[] = [
   },
 ];
 
-// Coordinates are pixels of the original 1920×1079 panorama. Only the two
-// asphalt roads that stay visible along the right side of that picture.
-export const roadHighlight = ['1275,450 1360,420 1310,1079 1205,1079', '1140,500 1225,470 1145,1079 1045,1079'];
+// Centerlines in the original 1920×1079 panorama. Each stroke stays inside
+// the asphalt: the highway, the road beside it, the road in front of the
+// towers, and one courtyard drive. Widths are viewBox pixels.
+export const roadHighlight = [
+  { width: 15, points: '1205,680 1198,780 1200,880 1190,980 1178,1060' },
+  { width: 12, points: '1078,700 1080,800 1065,900 1052,1000 1055,1070' },
+  { width: 10, points: '560,820 650,760 760,700 850,655' },
+  { width: 8, points: '980,740 955,790 930,840' },
+];
