@@ -397,11 +397,6 @@
   .horizon-sun {
     transform: translateY(-50%);
   }
-
-  .assemble-stage,
-  .assemble-layer {
-    animation: none;
-  }
 }
 
 @utility card {

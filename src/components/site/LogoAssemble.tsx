@@ -2,11 +2,12 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-const MARK = '/brand/gorizont-mark.png';
 const LINE = '/brand/gorizont-line.png';
 const ARC = '/brand/gorizont-arc.png';
 const DISK = '/brand/gorizont-disk.png';
 const LETTERS_SRC = '/brand/gorizont-letters.png';
+const PLAYED_KEY = 'gorizont-logo-played';
+const PLAY_MS = 2480;
 
 const LETTERS = [
   [190, 266],
@@ -19,8 +20,7 @@ const LETTERS = [
   [902, 1000],
 ] as const;
 
-const PLAY_MS = 2480;
-const REDUCED_MS = 700;
+let playedInMemory = false;
 
 const clip = (x0: number, x1: number) => {
   const top = (400 / 691) * 100;
@@ -30,28 +30,34 @@ const clip = (x0: number, x1: number) => {
   return `inset(${top}% ${right}% ${bottom}% ${left}%)`;
 };
 
+const alreadyPlayed = () => {
+  if (playedInMemory) return true;
+  try {
+    return window.sessionStorage.getItem(PLAYED_KEY) === '1';
+  } catch {
+    return false;
+  }
+};
+
+const markPlayed = () => {
+  playedInMemory = true;
+  try {
+    window.sessionStorage.setItem(PLAYED_KEY, '1');
+  } catch {
+    // The in-memory flag still blocks another play in this tab.
+  }
+};
+
 export function LogoAssemble() {
-  const [run, setRun] = useState(0);
   const [playing, setPlaying] = useState(false);
-  const [reduced, setReduced] = useState(false);
   const playingRef = useRef(false);
-  const reducedRef = useRef(false);
   const timerRef = useRef<number | null>(null);
 
   useEffect(() => {
-    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const apply = () => {
-      reducedRef.current = media.matches;
-      setReduced(media.matches);
-    };
-    apply();
-    media.addEventListener('change', apply);
-    return () => media.removeEventListener('change', apply);
-  }, []);
+    if (alreadyPlayed()) playedInMemory = true;
 
-  useEffect(() => {
     const onClick = (event: MouseEvent) => {
-      if (event.button !== 0 || playingRef.current) return;
+      if (event.button !== 0 || playingRef.current || alreadyPlayed()) return;
       const target = event.target;
       if (!(target instanceof Element)) return;
       if (
@@ -61,18 +67,15 @@ export function LogoAssemble() {
       ) {
         return;
       }
+      markPlayed();
       playingRef.current = true;
-      setRun((value) => value + 1);
       setPlaying(true);
-      if (timerRef.current) window.clearTimeout(timerRef.current);
-      timerRef.current = window.setTimeout(
-        () => {
-          playingRef.current = false;
-          setPlaying(false);
-        },
-        reducedRef.current ? REDUCED_MS : PLAY_MS,
-      );
+      timerRef.current = window.setTimeout(() => {
+        playingRef.current = false;
+        setPlaying(false);
+      }, PLAY_MS);
     };
+
     document.addEventListener('click', onClick);
     return () => {
       document.removeEventListener('click', onClick);
@@ -87,30 +90,21 @@ export function LogoAssemble() {
       className="pointer-events-none fixed top-1/2 left-1/2 z-50 w-[min(88vw,920px)] -translate-x-1/2 -translate-y-1/2"
       aria-hidden="true"
     >
-      <div
-        key={run}
-        className={`assemble-stage relative aspect-[1920/691] w-full ${reduced ? 'is-reduced' : 'is-playing'}`}
-      >
-        {reduced ? (
-          <img src={MARK} alt="" width={1920} height={691} className="absolute inset-0 h-full w-full" />
-        ) : (
-          <>
-            <img src={LINE} alt="" width={1920} height={691} className="assemble-layer assemble-line" />
-            <img src={ARC} alt="" width={1920} height={691} className="assemble-layer assemble-arc" />
-            <img src={DISK} alt="" width={1920} height={691} className="assemble-layer assemble-disk" />
-            {LETTERS.map(([x0, x1], index) => (
-              <img
-                key={`${x0}-${x1}`}
-                src={LETTERS_SRC}
-                alt=""
-                width={1920}
-                height={691}
-                className="assemble-layer assemble-letter"
-                style={{ clipPath: clip(x0, x1), animationDelay: `${1.12 + index * 0.08}s` }}
-              />
-            ))}
-          </>
-        )}
+      <div className="assemble-stage is-playing relative aspect-[1920/691] w-full">
+        <img src={LINE} alt="" width={1920} height={691} className="assemble-layer assemble-line" />
+        <img src={ARC} alt="" width={1920} height={691} className="assemble-layer assemble-arc" />
+        <img src={DISK} alt="" width={1920} height={691} className="assemble-layer assemble-disk" />
+        {LETTERS.map(([x0, x1], index) => (
+          <img
+            key={`${x0}-${x1}`}
+            src={LETTERS_SRC}
+            alt=""
+            width={1920}
+            height={691}
+            className="assemble-layer assemble-letter"
+            style={{ clipPath: clip(x0, x1), animationDelay: `${1.12 + index * 0.08}s` }}
+          />
+        ))}
       </div>
     </div>
   );

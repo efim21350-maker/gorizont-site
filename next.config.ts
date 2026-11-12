@@ -62,6 +62,12 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      {
+        // HTML must revalidate so a browser does not keep a document that points at
+        // an older script. Hashed files under /_next/static stay immutable.
+        source: '/:path((?!_next/static|_next/image|brand).*)',
+        headers: [{ key: 'Cache-Control', value: 'private, no-cache, must-revalidate' }],
+      },
     ];
   },
   images: {
