@@ -42,7 +42,7 @@ export const featuresHome: FeaturesProps = {
 export const contentHomeOne: ContentProps = {
   header: { title: 'О компании' },
   content:
-    'ООО «Горизонт» — строительная операционная компания группы в Санкт-Петербурге. Название группы — [уточнить].',
+    'ООО «Горизонт» — самостоятельная строительная компания. Работаем в Санкт-Петербурге с 2018 года и в Ленинградской области.',
   items: [
     {
       title: 'СРО',
@@ -53,8 +53,8 @@ export const contentHomeOne: ContentProps = {
 };
 
 export const contentHomeTwo: ContentProps = {
-  content: 'Портфолио на сайте не опубликовано. Карточки объектов помечены как [уточнить].',
-  items: [{ title: 'Объекты', description: '[уточнить]' }],
+  content: 'На сайте три объекта: названия, место и тип работ. Объёмы и сроки не указаны.',
+  items: [{ title: 'Объекты', description: 'Благоустройство и улично-дорожная сеть.' }],
   isReversed: true,
 };
 
@@ -63,7 +63,7 @@ export const stepsHome: StepsProps = {
   header: { title: 'Как отправить заявку' },
   items: [
     { title: 'Опишите объект', description: 'Вид работ и район в Санкт-Петербурге.' },
-    { title: 'Исходные данные', description: 'Комплект документов — [уточнить].' },
+    { title: 'Исходные данные', description: 'Проект или техническое задание, если они есть.' },
   ],
 };
 
@@ -71,16 +71,16 @@ export const testimonialsHome: TestimonialsProps = {
   header: { title: 'Отзывы', subtitle: 'Публичных отзывов пока нет.' },
   testimonials: [
     {
-      name: '[уточнить]',
-      job: 'Отзыв не опубликован',
-      testimonial: 'Тексты заказчиков будут добавлены после согласования. [уточнить]',
+      name: 'Не опубликовано',
+      job: 'Отзыв не размещён',
+      testimonial: 'Тексты заказчиков на сайте не размещены.',
     },
   ],
 };
 
 export const faqs2Home: FAQsProps = {
   header: { title: 'Вопросы' },
-  items: [{ title: 'Где работаете?', description: 'В Санкт-Петербурге. Выезд за город — [уточнить].' }],
+  items: [{ title: 'Где работаете?', description: 'В Санкт-Петербурге с 2018 года и в Ленинградской области.' }],
 };
 
 export const pricingHome: PricingProps = {

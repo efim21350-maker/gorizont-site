@@ -80,7 +80,7 @@ export default function ContactRequestForm({ idPrefix }: { idPrefix?: string }) 
       <div className="border border-[#111] bg-white p-6 md:p-8" role="status">
         <p className="font-display text-2xl tracking-tight text-[#111]">Заявка отправлена</p>
         <p className="mt-3 text-base leading-relaxed text-[#3a3a3a]">
-          Мы получили сообщение и ответим на указанные контакты. Срок ответа — [уточнить].
+          Мы получили сообщение и ответим на указанные контакты.
         </p>
         <button
           type="button"

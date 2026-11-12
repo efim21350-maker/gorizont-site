@@ -6,7 +6,7 @@ import HorizonHero from '~/components/site/HorizonHero';
 import ServiceIndex from '~/components/site/ServiceIndex';
 import ContactRequestForm from '~/components/feedback/ContactRequestForm';
 import { FeedbackButton } from '~/components/feedback/FeedbackProvider';
-import { company, sroSummary } from '~/lib/company';
+import { company, companyProfile, sroSummary } from '~/lib/company';
 
 export const metadata: Metadata = buildMetadata({
   description:
@@ -22,7 +22,7 @@ const steps = [
   {
     num: '02',
     title: 'Передайте исходные данные',
-    text: 'Если есть проект или техническое задание, их можно обсудить после первого сообщения. Обязательный комплект документов — [уточнить].',
+    text: 'Если есть проект или техническое задание, их можно обсудить после первого сообщения.',
   },
 ];
 
@@ -57,11 +57,7 @@ export default function Page() {
             </h2>
           </div>
           <div className="md:col-span-7">
-            <p className="text-lg leading-relaxed text-[#222]">
-              {company.fullName} ведёт благоустройство и ландшафт, земляные работы, дорожное строительство и наружные
-              сети водоснабжения и канализации. Компания позиционируется как строительная операционная компания группы.
-              Название группы — [уточнить].
-            </p>
+            <p className="text-lg leading-relaxed text-[#222]">{companyProfile.join(' ')}</p>
             <dl className="mt-8">
               <div className="border-t border-black/10 pt-4">
                 <dt className="text-xs tracking-[0.14em] text-[#8a8a8a] uppercase">СРО</dt>
@@ -141,7 +137,6 @@ export default function Page() {
                 </li>
               ))}
             </ul>
-            <p className="mt-6 text-sm leading-relaxed text-[#5c5c5c]">Режим работы — [уточнить].</p>
             <FeedbackButton className="mt-8 btn btn-primary md:hidden">Обратная связь</FeedbackButton>
           </div>
           <div className="md:col-span-7">

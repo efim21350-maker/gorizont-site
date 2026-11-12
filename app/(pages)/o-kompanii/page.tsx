@@ -3,11 +3,11 @@ import Link from 'next/link';
 
 import { buildMetadata } from '~/utils/metadata';
 import PageIntro from '~/components/site/PageIntro';
-import { company, sroSummary } from '~/lib/company';
+import { company, companyProfile, sroSummary } from '~/lib/company';
 
 export const metadata: Metadata = buildMetadata({
   title: 'О компании',
-  description: 'ООО «Горизонт» — строительная компания в Санкт-Петербурге. Членство в СРО и реквизиты.',
+  description: companyProfile.join(' '),
   path: '/o-kompanii',
 });
 
@@ -25,23 +25,11 @@ const requisites = [
 export default function AboutPage() {
   return (
     <>
-      <PageIntro
-        eyebrow="О компании"
-        title="Горизонт держит строительный контур группы"
-        lede="Компания работает в Санкт-Петербурге: благоустройство и ландшафт, земляные работы, дороги и наружные сети. Это операционная строительная компания группы, а не личная страница."
-      />
+      <PageIntro eyebrow="О компании" title="Самостоятельная строительная компания" lede={companyProfile.join(' ')} />
       <section className="bg-[#f6f4f1]">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 md:grid-cols-12 md:py-24">
           <div className="md:col-span-12">
-            <p className="text-lg leading-relaxed text-[#222]">
-              {company.fullName} позиционируется как строительная операционная компания группы. Название группы —
-              [уточнить]. Публичных объёмов, лет на рынке и списка заказчиков на сайте нет: эти сведения не подтверждены
-              для публикации.
-            </p>
-            <p className="mt-5 text-lg leading-relaxed text-[#222]">
-              География, которую можно указать точно, — Санкт-Петербург. Работа за пределами города — [уточнить].
-            </p>
-            <div className="mt-8 border border-black/10 bg-white p-6">
+            <div className="border border-black/10 bg-white p-6">
               <p className="text-xs tracking-[0.16em] text-[#C5001C] uppercase">СРО</p>
               <p className="mt-3 text-base leading-relaxed">{sroSummary}</p>
               <p className="mt-3 text-base leading-relaxed">

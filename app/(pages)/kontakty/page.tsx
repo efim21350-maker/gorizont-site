@@ -59,10 +59,6 @@ export default function ContactsPage() {
                   ОКПО {company.okpo}
                 </dd>
               </div>
-              <div>
-                <dt className="text-xs tracking-[0.14em] text-[#8a8a8a] uppercase">Режим</dt>
-                <dd className="mt-2">[уточнить]</dd>
-              </div>
             </dl>
           </div>
           <div className="md:col-span-7">

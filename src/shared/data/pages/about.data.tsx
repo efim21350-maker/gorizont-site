@@ -23,7 +23,7 @@ export const statsAbout: StatsProps = {
     { title: 'СПб', description: 'Город работ' },
     { title: 'ПОС № 1617', description: 'С 15.09.2026, по выписке от 16.09.2026' },
     { title: '81.30', description: 'ОКВЭД' },
-    { title: '[уточнить]', description: 'Название группы' },
+    { title: '2018', description: 'Работаем в Санкт-Петербурге' },
   ],
 };
 
@@ -47,7 +47,7 @@ export const stepsAbout: StepsProps = {
 export const features3About: FeaturesProps = {
   isImageDisplayed: false,
   header: { title: 'Санкт-Петербург' },
-  items: [{ title: 'География', description: 'Выезд за пределы города — [уточнить].' }],
+  items: [{ title: 'География', description: 'Санкт-Петербург и Ленинградская область.' }],
 };
 
 export const featuresAbout: FeaturesProps = {
@@ -74,9 +74,9 @@ export const testimonials2About: TestimonialsProps = {
   header: { title: 'Отзывы' },
   testimonials: [
     {
-      name: '[уточнить]',
-      job: 'Не опубликовано',
-      testimonial: 'Отзывы заказчиков на сайте не размещены. [уточнить]',
+      name: 'Не опубликовано',
+      job: 'Отзыв не размещён',
+      testimonial: 'Отзывы заказчиков на сайте не размещены.',
     },
   ],
 };

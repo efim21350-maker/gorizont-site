@@ -2,7 +2,7 @@ import { CallToActionProps, FAQsProps, HeroProps } from '../../types';
 
 export const heroFaqs: HeroProps = {
   title: 'Вопросы',
-  subtitle: 'Только проверенные ответы. Остальное помечено [уточнить].',
+  subtitle: 'Короткие ответы о компании, работах и СРО.',
 };
 
 export const faqs4Faqs: FAQsProps = {

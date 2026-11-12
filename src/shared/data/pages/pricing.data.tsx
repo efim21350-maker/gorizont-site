@@ -20,7 +20,7 @@ export const comparisonPricing: ComparisonProps = {
     },
     {
       title: 'Заявка',
-      items: [{ title: 'Опишите' }, { title: 'Укажите' }, { title: '[уточнить]' }],
+      items: [{ title: 'Опишите' }, { title: 'Укажите' }, { title: 'Отправьте' }],
       callToAction: { text: 'Написать', href: '/kontakty' },
     },
   ],
@@ -29,6 +29,6 @@ export const comparisonPricing: ComparisonProps = {
 export const faqs3Pricing: FAQsProps = {
   items: [
     { title: 'Почему нет цен?', description: 'Стоимость зависит от проекта. Выдуманные цифры на сайт не ставим.' },
-    { title: 'Когда будет расчёт?', description: 'Срок — [уточнить].' },
+    { title: 'Когда будет расчёт?', description: 'Срок расчёта на сайте не указан.' },
   ],
 };

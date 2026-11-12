@@ -22,7 +22,7 @@ export const contentServicesOne: ContentProps = {
 
 export const contentServicesTwo: ContentProps = {
   content: 'География, которую можно указать точно, — Санкт-Петербург.',
-  items: [{ title: 'Город', description: 'Выезд за пределы — [уточнить].' }],
+  items: [{ title: 'Город', description: 'Санкт-Петербург и Ленинградская область.' }],
   isReversed: true,
 };
 
@@ -35,9 +35,9 @@ export const features4Services: FeaturesProps = {
 export const testimonialsServices: TestimonialsProps = {
   testimonials: [
     {
-      name: '[уточнить]',
-      job: 'Не опубликовано',
-      testimonial: 'Кейсы с цифрами на сайте не публикуются. [уточнить]',
+      name: 'Не опубликовано',
+      job: 'Кейс не размещён',
+      testimonial: 'Кейсы с цифрами на сайте не публикуются.',
     },
   ],
 };
