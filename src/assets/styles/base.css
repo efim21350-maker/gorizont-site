@@ -300,11 +300,18 @@
   transform: none;
 }
 
+.assemble-stage {
+  background: transparent;
+  box-shadow: none;
+}
+
 .assemble-layer {
   position: absolute;
   inset: 0;
   height: 100%;
   width: 100%;
+  background: transparent;
+  object-fit: fill;
   opacity: 0;
 }
 
@@ -312,40 +319,28 @@
   transform: scaleX(0);
   transform-origin: left center;
   opacity: 1;
-  animation: assemble-line 0.28s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: assemble-line 0.34s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.is-playing .assemble-arc {
+  animation: assemble-fade 0.32s ease 0.38s forwards;
 }
 
 .is-playing .assemble-disk {
-  transform: scale(0);
-  transform-origin: 68% 46%;
-  opacity: 1;
-  animation: assemble-disk 0.26s cubic-bezier(0.16, 0.84, 0.24, 1) 0.32s forwards;
-}
-
-.is-playing .assemble-stripe {
-  opacity: 0;
-  animation: assemble-fade 0.16s ease forwards;
+  animation: assemble-fade 0.34s ease 0.74s forwards;
 }
 
 .is-playing .assemble-letter {
-  opacity: 0;
-  animation: assemble-letter 0.12s ease forwards;
+  animation: assemble-letter 0.14s ease forwards;
 }
 
-.is-playing .assemble-full {
-  opacity: 0;
-  animation: assemble-fade 0.05s linear 1.9s forwards;
+.is-playing.assemble-stage {
+  animation: assemble-exit 0.4s ease 2s forwards;
 }
 
 @keyframes assemble-line {
   to {
     transform: scaleX(1);
-  }
-}
-
-@keyframes assemble-disk {
-  to {
-    transform: scale(1);
   }
 }
 
@@ -358,11 +353,17 @@
 @keyframes assemble-letter {
   from {
     opacity: 0;
-    transform: translateY(5px);
+    transform: translateY(4px);
   }
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+@keyframes assemble-exit {
+  to {
+    opacity: 0;
   }
 }
 
@@ -395,6 +396,11 @@
 
   .horizon-sun {
     transform: translateY(-50%);
+  }
+
+  .assemble-stage,
+  .assemble-layer {
+    animation: none;
   }
 }
 
