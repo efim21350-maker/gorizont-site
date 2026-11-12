@@ -1,12 +1,12 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 const LINE = '/brand/gorizont-line.png';
 const ARC = '/brand/gorizont-arc.png';
 const DISK = '/brand/gorizont-disk.png';
 const LETTERS_SRC = '/brand/gorizont-letters.png';
-const PLAYED_KEY = 'gorizont-logo-played';
 const PLAY_MS = 2480;
 
 const LETTERS = [
@@ -20,7 +20,14 @@ const LETTERS = [
   [902, 1000],
 ] as const;
 
-let playedInMemory = false;
+const playedPaths = new Set<string>();
+
+const pageKey = (path: string) => {
+  if (!path || path === '/') return '/';
+  return path.endsWith('/') ? path.slice(0, -1) : path;
+};
+
+const storageKey = (path: string) => `gorizont-logo-played:${pageKey(path)}`;
 
 const clip = (x0: number, x1: number) => {
   const top = (400 / 691) * 100;
@@ -30,34 +37,41 @@ const clip = (x0: number, x1: number) => {
   return `inset(${top}% ${right}% ${bottom}% ${left}%)`;
 };
 
-const alreadyPlayed = () => {
-  if (playedInMemory) return true;
+const alreadyPlayed = (path: string) => {
+  const key = pageKey(path);
+  if (playedPaths.has(key)) return true;
   try {
-    return window.sessionStorage.getItem(PLAYED_KEY) === '1';
+    return window.sessionStorage.getItem(storageKey(key)) === '1';
   } catch {
     return false;
   }
 };
 
-const markPlayed = () => {
-  playedInMemory = true;
+const markPlayed = (path: string) => {
+  const key = pageKey(path);
+  playedPaths.add(key);
   try {
-    window.sessionStorage.setItem(PLAYED_KEY, '1');
+    window.sessionStorage.setItem(storageKey(key), '1');
   } catch {
-    // The in-memory flag still blocks another play in this tab.
+    // The in-memory flag still blocks another play of this page.
   }
 };
 
 export function LogoAssemble() {
+  const pathname = usePathname() ?? '/';
+  const pathRef = useRef(pathname);
   const [playing, setPlaying] = useState(false);
   const playingRef = useRef(false);
   const timerRef = useRef<number | null>(null);
 
   useEffect(() => {
-    if (alreadyPlayed()) playedInMemory = true;
+    pathRef.current = pathname;
+  }, [pathname]);
 
+  useEffect(() => {
     const onClick = (event: MouseEvent) => {
-      if (event.button !== 0 || playingRef.current || alreadyPlayed()) return;
+      const path = pathRef.current;
+      if (event.button !== 0 || playingRef.current || alreadyPlayed(path)) return;
       const target = event.target;
       if (!(target instanceof Element)) return;
       if (
@@ -67,7 +81,7 @@ export function LogoAssemble() {
       ) {
         return;
       }
-      markPlayed();
+      markPlayed(path);
       playingRef.current = true;
       setPlaying(true);
       timerRef.current = window.setTimeout(() => {

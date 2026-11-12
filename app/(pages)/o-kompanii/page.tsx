@@ -25,7 +25,7 @@ const requisites = [
 export default function AboutPage() {
   return (
     <>
-      <PageIntro eyebrow="О компании" title="Самостоятельная строительная компания" lede={companyProfile.join(' ')} />
+      <PageIntro eyebrow="О компании" title="Строительная компания" lede={companyProfile.join(' ')} />
       <section className="bg-[#f6f4f1]">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 md:grid-cols-12 md:py-24">
           <div className="md:col-span-12">
