@@ -100,24 +100,26 @@ export default function Page() {
         <div className="mx-auto grid max-w-7xl gap-10 px-5 py-20 md:grid-cols-2 md:py-28">
           <div>
             <p className="text-xs tracking-[0.2em] text-white/50 uppercase">Объекты</p>
-            <h2 className="mt-3 font-display text-4xl tracking-tight md:text-5xl">Портфолио ещё не опубликовано</h2>
+            <h2 className="mt-3 font-display text-4xl tracking-tight md:text-5xl">Три объекта</h2>
             <p className="mt-5 max-w-md text-lg leading-relaxed text-white/70">
-              Названия объектов, фотографии и объёмы работ появятся только после согласования. Сейчас это заготовка, а
-              не перечень выполненных контрактов.
+              Названия, место и тип работ. Фотографии — с сайта ГК «Самолёт». Объёмы, сроки и суммы не указаны.
             </p>
             <Link
               href="/obekty"
               className="mt-8 inline-flex border border-white/30 px-5 py-3 text-sm hover:bg-white hover:text-[#111]"
             >
-              Смотреть заготовку
+              Смотреть объекты
             </Link>
           </div>
           <div className="grid gap-4">
-            {['01', '02', '03'].map((num) => (
-              <div key={num} className="border border-white/15 p-5">
-                <p className="text-xs tracking-[0.16em] text-[#C5001C]">Объект {num}</p>
-                <p className="mt-2 font-display text-2xl">[уточнить]</p>
-                <p className="mt-2 text-sm text-white/60">Название, адрес и состав работ не указаны.</p>
+            {[
+              ['Благоустройство', '«Живи! В Рыбацком», корпус 39'],
+              ['Благоустройство', '«Южная Нева»'],
+              ['Улично-дорожная сеть', '«Живи! В Рыбацком»'],
+            ].map(([work, name]) => (
+              <div key={name} className="border border-white/15 p-5">
+                <p className="text-xs tracking-[0.16em] text-[#C5001C]">{work}</p>
+                <p className="mt-2 font-display text-2xl">{name}</p>
               </div>
             ))}
           </div>
