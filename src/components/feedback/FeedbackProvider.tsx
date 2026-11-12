@@ -4,8 +4,13 @@ import { createContext, useCallback, useContext, useEffect, useId, useRef, useSt
 
 import ContactRequestForm from '~/components/feedback/ContactRequestForm';
 
+export type FeedbackOpenOptions = {
+  message?: string;
+  resume?: boolean;
+};
+
 type FeedbackContextValue = {
-  open: () => void;
+  open: (options?: FeedbackOpenOptions) => void;
   close: () => void;
 };
 
@@ -26,7 +31,7 @@ export function FeedbackButton({
   const { open } = useFeedback();
 
   return (
-    <button type="button" className={className} onClick={open}>
+    <button type="button" className={className} onClick={() => open()}>
       {children}
     </button>
   );
@@ -34,13 +39,15 @@ export function FeedbackButton({
 
 export function FeedbackProvider({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [draft, setDraft] = useState<FeedbackOpenOptions | null>(null);
   const titleId = useId();
   const dialogRef = useRef<HTMLDivElement>(null);
   const previouslyFocused = useRef<HTMLElement | null>(null);
 
   const close = useCallback(() => setIsOpen(false), []);
-  const open = useCallback(() => {
+  const open = useCallback((options?: FeedbackOpenOptions) => {
     previouslyFocused.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    setDraft(options ?? null);
     setIsOpen(true);
   }, []);
 
@@ -91,7 +98,11 @@ export function FeedbackProvider({ children }: { children: React.ReactNode }) {
                 Закрыть
               </button>
             </div>
-            <ContactRequestForm />
+            <ContactRequestForm
+              key={`${draft?.resume ? 'resume' : 'plain'}:${draft?.message ?? ''}`}
+              initialMessage={draft?.message}
+              resume={draft?.resume}
+            />
           </div>
         </div>
       ) : null}

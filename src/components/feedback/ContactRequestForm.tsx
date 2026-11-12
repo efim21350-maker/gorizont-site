@@ -5,14 +5,61 @@ import Link from 'next/link';
 
 type Status = 'idle' | 'sending' | 'success' | 'error';
 
+const ACCEPT = '.pdf,.doc,.docx,.rtf,.jpg,.jpeg,.png';
+const MAX_RESUME_BYTES = 10 * 1024 * 1024;
+const RESUME_EXTENSIONS = new Set(['pdf', 'doc', 'docx', 'rtf', 'jpg', 'jpeg', 'png']);
+
 const initial = { name: '', phone: '', email: '', message: '', consent: false, website: '' };
 
-export default function ContactRequestForm({ idPrefix }: { idPrefix?: string }) {
+const resumeProblem = (file: File) => {
+  const extension = file.name.split('.').pop()?.toLowerCase() ?? '';
+  if (!RESUME_EXTENSIONS.has(extension)) {
+    return 'Резюме можно приложить файлом pdf, doc, docx, rtf, jpg или png.';
+  }
+  if (file.size > MAX_RESUME_BYTES) return 'Файл резюме больше 10 МБ.';
+  return '';
+};
+
+export default function ContactRequestForm({
+  idPrefix,
+  initialMessage = '',
+  resume = false,
+}: {
+  idPrefix?: string;
+  initialMessage?: string;
+  resume?: boolean;
+}) {
   const reactId = useId();
   const id = idPrefix ?? reactId;
-  const [values, setValues] = useState(initial);
+  const [values, setValues] = useState({ ...initial, message: initialMessage });
+  const [file, setFile] = useState<File | null>(null);
   const [status, setStatus] = useState<Status>('idle');
   const [error, setError] = useState('');
+
+  const jsonRequest = () => ({
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: values.name.trim(),
+      phone: values.phone.trim(),
+      email: values.email.trim(),
+      message: values.message.trim(),
+      consent: values.consent,
+      website: values.website,
+    }),
+  });
+
+  const formRequest = () => {
+    const body = new FormData();
+    body.set('name', values.name.trim());
+    body.set('phone', values.phone.trim());
+    body.set('email', values.email.trim());
+    body.set('message', values.message.trim());
+    body.set('consent', String(values.consent));
+    body.set('website', values.website);
+    if (file) body.set('resume', file);
+    return { method: 'POST', body };
+  };
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -43,22 +90,19 @@ export default function ContactRequestForm({ idPrefix }: { idPrefix?: string }) 
       setError('Нужно согласие на обработку персональных данных, чтобы мы могли ответить.');
       return;
     }
+    if (file) {
+      const problem = resumeProblem(file);
+      if (problem) {
+        setStatus('error');
+        setError(problem);
+        return;
+      }
+    }
 
     setStatus('sending');
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: values.name.trim(),
-          phone: values.phone.trim(),
-          email: values.email.trim(),
-          message: values.message.trim(),
-          consent: values.consent,
-          website: values.website,
-        }),
-      });
+      const response = await fetch('/api/contact', resume || file ? formRequest() : jsonRequest());
       const payload = (await response.json().catch(() => null)) as { ok?: boolean; error?: string } | null;
 
       if (!response.ok || !payload?.ok) {
@@ -68,7 +112,8 @@ export default function ContactRequestForm({ idPrefix }: { idPrefix?: string }) 
       }
 
       setStatus('success');
-      setValues(initial);
+      setValues({ ...initial, message: initialMessage });
+      setFile(null);
     } catch {
       setStatus('error');
       setError('Нет связи с сервером. Письмо не отправлено. Напишите на почту компании.');
@@ -146,6 +191,22 @@ export default function ContactRequestForm({ idPrefix }: { idPrefix?: string }) 
           className="w-full border border-black/15 bg-white px-3 py-3 text-base text-[#111] outline-none focus:border-[#C5001C]"
         />
       </label>
+      {resume ? (
+        <label className="block text-sm" htmlFor={`${id}-resume`}>
+          <span className="mb-1.5 block text-xs tracking-[0.14em] text-[#5c5c5c] uppercase">Резюме</span>
+          <input
+            id={`${id}-resume`}
+            name="resume"
+            type="file"
+            accept={ACCEPT}
+            onChange={(event) => setFile(event.target.files?.[0] ?? null)}
+            className="w-full border border-black/15 bg-white px-3 py-3 text-base text-[#111]"
+          />
+          <span className="mt-1 block text-xs text-[#6b6b6b]">
+            Один файл: pdf, doc, docx, rtf, jpg или png, до 10 МБ.
+          </span>
+        </label>
+      ) : null}
       <label className="flex items-start gap-3 text-sm leading-relaxed text-[#3a3a3a]">
         <input
           type="checkbox"

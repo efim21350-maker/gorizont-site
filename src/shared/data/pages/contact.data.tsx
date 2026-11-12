@@ -4,7 +4,7 @@ import { ContactProps, FeaturesProps, HeroProps } from '../../types';
 export const heroContact: HeroProps = {
   title: 'Контакты',
   subtitle: '195009, Санкт-Петербург, Кондратьевский пр., д.2, к.4, лит.А, пом.5-Н, оф.216/2',
-  callToAction: { text: 'Написать', href: 'mailto:ivangrosu127@gmail.com' },
+  callToAction: { text: 'Написать', href: 'mailto:gorgros26@mail.ru' },
 };
 
 export const contact2Contact: ContactProps = {
@@ -17,7 +17,7 @@ export const contact2Contact: ContactProps = {
     },
     {
       title: 'Почта',
-      description: ['ivangrosu127@gmail.com', 'buh.gorizont@internet.ru'],
+      description: ['gorgros26@mail.ru'],
       icon: IconMail,
     },
   ],

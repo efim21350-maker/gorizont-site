@@ -13,7 +13,7 @@ export const company = {
   city: 'Санкт-Петербург',
   street: 'Кондратьевский пр., д.2, к.4, лит.А, пом.5-Н, оф.216/2',
   address: '195009, Санкт-Петербург, Кондратьевский пр., д.2, к.4, лит.А, пом.5-Н, оф.216/2',
-  emails: ['ivangrosu127@gmail.com', 'buh.gorizont@internet.ru'] as const,
+  emails: ['gorgros26@mail.ru'] as const,
   logo: '/brand/gorizont-original.jpg',
   sro: {
     shortName: 'Ассоциация «ПОС»',
@@ -37,7 +37,10 @@ export const nav = [
   { href: '/uslugi', label: 'Услуги' },
   { href: '/o-kompanii', label: 'Компания' },
   { href: '/obekty', label: 'Объекты' },
+  { href: '/vakansii', label: 'Вакансии' },
 ] as const;
+
+export const mailTo = 'gorgros26@mail.ru';
 
 export const services = [
   {
@@ -68,4 +71,4 @@ export const services = [
 
 export const mapHref = `https://yandex.ru/maps/?text=${encodeURIComponent(company.address)}`;
 
-export const mailFailureMessage = `Не удалось отправить заявку: почта на сайте ещё не подключена. Письмо не отправлено. Напишите на ${company.emails[0]} или ${company.emails[1]}.`;
+export const mailFailureMessage = `Не удалось отправить заявку: почта на сайте ещё не подключена. Письмо не отправлено. Напишите на ${mailTo}.`;

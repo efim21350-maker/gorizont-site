@@ -97,7 +97,7 @@ export const teamHome: TeamProps = {
       name: 'Не публикуется',
       occupation: 'Состав не указан',
       image: logo,
-      items: [{ title: 'Почта', icon: IconMail, href: 'mailto:ivangrosu127@gmail.com' }],
+      items: [{ title: 'Почта', icon: IconMail, href: 'mailto:gorgros26@mail.ru' }],
     },
   ],
 };
@@ -113,7 +113,7 @@ export const contactHome: ContactProps = {
     },
     {
       title: 'Связь',
-      description: ['ivangrosu127@gmail.com', 'buh.gorizont@internet.ru'],
+      description: ['gorgros26@mail.ru'],
       icon: IconMail,
     },
   ],
