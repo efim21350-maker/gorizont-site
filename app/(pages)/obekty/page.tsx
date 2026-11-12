@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { buildMetadata } from '~/utils/metadata';
 import PageIntro from '~/components/site/PageIntro';
 import { FeedbackButton } from '~/components/feedback/FeedbackProvider';
-import { objects, roadHighlight } from '~/lib/objects';
+import { objects } from '~/lib/objects';
 
 export const metadata: Metadata = buildMetadata({
   title: 'Объекты',
@@ -26,45 +26,14 @@ export default function ProjectsPage() {
             {objects.map((item) => (
               <article key={item.title} className="bg-white">
                 <figure>
-                  <div className={item.roads ? 'relative aspect-[1920/1079]' : 'relative'}>
+                  <div className="relative">
                     <img
                       src={item.image}
                       alt={item.alt}
                       width={item.width}
                       height={item.height}
-                      className={item.roads ? 'absolute inset-0 h-full w-full object-fill' : 'block h-auto w-full'}
+                      className="block h-auto w-full"
                     />
-                    {item.roads ? (
-                      <svg
-                        className="pointer-events-none absolute inset-0 h-full w-full"
-                        viewBox="0 0 1920 1079"
-                        preserveAspectRatio="none"
-                        aria-hidden="true"
-                      >
-                        {roadHighlight.map((road, index) => (
-                          <g key={road.points}>
-                            {[
-                              { stroke: '#fff', opacity: 0.92, width: road.width + 4 },
-                              { stroke: '#C5001C', opacity: 0.62, width: road.width },
-                            ].map((layer) => (
-                              <polyline
-                                key={layer.stroke}
-                                points={road.points}
-                                fill="none"
-                                stroke={layer.stroke}
-                                strokeOpacity={layer.opacity}
-                                strokeWidth={layer.width}
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                pathLength={1}
-                                className="road-draw"
-                                style={{ animationDelay: `${index * 0.18}s` }}
-                              />
-                            ))}
-                          </g>
-                        ))}
-                      </svg>
-                    ) : null}
                   </div>
                   <figcaption className="px-5 pt-3 text-xs leading-relaxed text-[#6b6b6b] md:px-8">
                     {item.credit}
