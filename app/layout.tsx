@@ -8,7 +8,6 @@ import JsonLd from '~/components/common/JsonLd';
 import Providers from '~/components/atoms/Providers';
 import Header from '~/components/widgets/Header';
 import Footer2 from '~/components/widgets/Footer2';
-import { FeedbackProvider } from '~/components/feedback/FeedbackProvider';
 import { LogoAssemble } from '~/components/site/LogoAssemble';
 
 import '~/assets/styles/base.css';
@@ -67,7 +66,6 @@ export default function RootLayout({ children }: LayoutProps) {
           }}
         />
         <Providers>
-          <FeedbackProvider>
             <a
               href="#main"
               className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-white focus:px-4 focus:py-2 focus:text-[#111] focus:shadow-lg"
@@ -78,7 +76,6 @@ export default function RootLayout({ children }: LayoutProps) {
             <LogoAssemble />
             <main id="main">{children}</main>
             <Footer2 />
-          </FeedbackProvider>
         </Providers>
       </body>
     </html>

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 import { buildMetadata } from '~/utils/metadata';
 import PageIntro from '~/components/site/PageIntro';
-import { VacancyApply } from '~/components/site/VacancyApply';
+import { company } from '~/lib/company';
 
 export const metadata: Metadata = buildMetadata({
   title: 'Вакансии',
@@ -20,9 +20,7 @@ export default function VacanciesPage() {
             <h2 className="font-display text-3xl tracking-tight text-[#111] md:text-4xl">Дорожный мастер</h2>
             <p className="mt-3 text-base leading-relaxed text-[#3a3a3a]">Санкт-Петербург и Ленинградская область</p>
             <p className="mt-3 text-base leading-relaxed text-[#3a3a3a]">Условия обсудим на собеседовании.</p>
-            <div className="mt-8">
-              <VacancyApply />
-            </div>
+            <p className="mt-6 text-base leading-relaxed text-[#111]">Резюме присылайте на {company.emails[0]}</p>
           </article>
         </div>
       </section>

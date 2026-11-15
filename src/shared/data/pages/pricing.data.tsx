@@ -21,7 +21,7 @@ export const comparisonPricing: ComparisonProps = {
     {
       title: 'Заявка',
       items: [{ title: 'Опишите' }, { title: 'Укажите' }, { title: 'Отправьте' }],
-      callToAction: { text: 'Написать', href: '/kontakty' },
+      callToAction: { text: 'Контакты', href: '/kontakty' },
     },
   ],
 };

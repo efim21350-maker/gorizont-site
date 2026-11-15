@@ -39,9 +39,7 @@ const Footer2 = () => (
         <ul className="mt-3 space-y-1 text-sm">
           {company.emails.map((email) => (
             <li key={email}>
-              <a href={`mailto:${email}`} className="hover:text-[#C5001C]">
-                {email}
-              </a>
+              <span>{email}</span>
             </li>
           ))}
         </ul>

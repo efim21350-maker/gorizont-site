@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 
 import { buildMetadata } from '~/utils/metadata';
 import PageIntro from '~/components/site/PageIntro';
-import { FeedbackButton } from '~/components/feedback/FeedbackProvider';
 import { objects } from '~/lib/objects';
 
 export const metadata: Metadata = buildMetadata({
@@ -47,7 +46,6 @@ export default function ProjectsPage() {
               </article>
             ))}
           </div>
-          <FeedbackButton className="mt-10 btn btn-primary">Обратная связь</FeedbackButton>
         </div>
       </section>
     </>

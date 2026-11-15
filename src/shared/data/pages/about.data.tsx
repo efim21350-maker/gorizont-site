@@ -65,7 +65,7 @@ export const teamAbout: TeamProps = {
       name: 'Не публикуется',
       occupation: 'Состав не указан',
       image: logo,
-      items: [{ title: 'Почта', icon: IconMail, href: 'mailto:gorgros26@mail.ru' }],
+      items: [{ title: 'Почта', icon: IconMail, href: '/kontakty' }],
     },
   ],
 };

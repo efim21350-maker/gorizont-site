@@ -2,12 +2,11 @@ import type { Metadata } from 'next';
 
 import { buildMetadata } from '~/utils/metadata';
 import PageIntro from '~/components/site/PageIntro';
-import ContactRequestForm from '~/components/feedback/ContactRequestForm';
 import { company, mapHref } from '~/lib/company';
 
 export const metadata: Metadata = buildMetadata({
   title: 'Контакты',
-  description: 'Адрес и почта ООО «Горизонт» в Санкт-Петербурге. Форма обратной связи.',
+  description: 'Адрес и почта ООО «Горизонт» в Санкт-Петербурге.',
   path: '/kontakty',
 });
 
@@ -35,17 +34,7 @@ export default function ContactsPage() {
               </div>
               <div>
                 <dt className="text-xs tracking-[0.14em] text-[#8a8a8a] uppercase">Почта</dt>
-                <dd className="mt-2 space-y-1">
-                  {company.emails.map((email) => (
-                    <a
-                      key={email}
-                      className="block underline decoration-[#C5001C] underline-offset-4"
-                      href={`mailto:${email}`}
-                    >
-                      {email}
-                    </a>
-                  ))}
-                </dd>
+                <dd className="mt-2 text-base text-[#111]">{company.emails[0]}</dd>
               </div>
               <div>
                 <dt className="text-xs tracking-[0.14em] text-[#8a8a8a] uppercase">Реквизиты</dt>
@@ -60,10 +49,6 @@ export default function ContactsPage() {
                 </dd>
               </div>
             </dl>
-          </div>
-          <div className="md:col-span-7">
-            <h2 className="mb-6 font-display text-3xl tracking-tight">Обратная связь</h2>
-            <ContactRequestForm idPrefix="contacts" />
           </div>
         </div>
       </section>

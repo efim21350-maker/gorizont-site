@@ -4,8 +4,6 @@ import Link from 'next/link';
 import { buildMetadata } from '~/utils/metadata';
 import HorizonHero from '~/components/site/HorizonHero';
 import ServiceIndex from '~/components/site/ServiceIndex';
-import ContactRequestForm from '~/components/feedback/ContactRequestForm';
-import { FeedbackButton } from '~/components/feedback/FeedbackProvider';
 import { company, companyProfile, sroSummary } from '~/lib/company';
 
 export const metadata: Metadata = buildMetadata({
@@ -128,19 +126,7 @@ export default function Page() {
             <p className="text-xs tracking-[0.2em] text-[#C5001C] uppercase">Контакты</p>
             <h2 className="mt-3 font-display text-4xl tracking-tight text-[#111] md:text-5xl">Напишите</h2>
             <p className="mt-5 text-base leading-relaxed text-[#3a3a3a]">{company.address}</p>
-            <ul className="mt-4 space-y-1">
-              {company.emails.map((email) => (
-                <li key={email}>
-                  <a className="underline decoration-[#C5001C] underline-offset-4" href={`mailto:${email}`}>
-                    {email}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <FeedbackButton className="mt-8 btn btn-primary md:hidden">Обратная связь</FeedbackButton>
-          </div>
-          <div className="md:col-span-7">
-            <ContactRequestForm idPrefix="home" />
+            <p className="mt-4 text-base text-[#111]">{company.emails[0]}</p>
           </div>
         </div>
       </section>

@@ -58,7 +58,7 @@ export const footerData2: FooterProps = {
     },
     {
       title: 'Почта',
-      texts: ['gorgros26@mail.ru'],
+      texts: ['sd.78.str@yandex.ru'],
     },
   ],
   socials: [],

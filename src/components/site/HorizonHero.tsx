@@ -1,7 +1,6 @@
 import Link from 'next/link';
 
 import { BrandWordmark } from '~/components/atoms/Logo';
-import { FeedbackButton } from '~/components/feedback/FeedbackProvider';
 import { company } from '~/lib/company';
 
 const facts = [
@@ -56,7 +55,6 @@ export default function HorizonHero() {
           канализации.
         </p>
         <div className="hero-copy mt-8 flex flex-col gap-3 sm:flex-row">
-          <FeedbackButton className="btn btn-primary">Обратная связь</FeedbackButton>
           <Link href="/uslugi" className="btn border-[#111] bg-white/80 text-[#111] hover:bg-[#111] hover:text-white">
             Смотреть услуги
           </Link>
