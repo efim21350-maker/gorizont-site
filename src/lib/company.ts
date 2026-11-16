@@ -13,7 +13,7 @@ export const company = {
   city: 'Санкт-Петербург',
   street: 'Кондратьевский пр., д.2, к.4, лит.А, пом.5-Н, оф.216/2',
   address: '195009, Санкт-Петербург, Кондратьевский пр., д.2, к.4, лит.А, пом.5-Н, оф.216/2',
-  emails: ['sd.78.str@yandex.ru'] as const,
+  emails: ['gorgros26@mail.ru'] as const,
   logo: '/brand/gorizont-original.jpg',
   sro: {
     shortName: 'Ассоциация «ПОС»',

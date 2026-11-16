@@ -113,7 +113,7 @@ export const contactHome: ContactProps = {
     },
     {
       title: 'Связь',
-      description: ['sd.78.str@yandex.ru'],
+      description: ['gorgros26@mail.ru'],
       icon: IconMail,
     },
   ],
